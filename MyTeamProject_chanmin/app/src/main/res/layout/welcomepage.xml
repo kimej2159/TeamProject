@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="12"
+    android:background="#dedede"
+    android:gravity="center_horizontal">
+
+
+    <!--첫째줄 메뉴-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="7dp"
+        android:paddingVertical="2dp"
+        >
+
+        <LinearLayout
+            android:layout_width="185dp"
+            android:layout_height="185dp"
+            android:weightSum="1"
+            android:background="@drawable/round"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+        <ImageView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/centerfind"
+                android:padding="4dp"
+                android:id="@+id/centerFind"
+
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="185dp"
+            android:layout_height="185dp"
+            android:weightSum="1"
+            android:background="@drawable/round"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/matching"
+                android:padding="4dp"
+                android:id="@+id/teacherFind"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <!--둘째줄 메뉴-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="7dp"
+        android:paddingVertical="2dp"
+        >
+
+        <LinearLayout
+            android:layout_width="185dp"
+            android:layout_height="185dp"
+            android:weightSum="1"
+            android:background="@drawable/round"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/timer"
+                android:padding="4dp"
+                android:id="@+id/timer"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="185dp"
+            android:layout_height="185dp"
+            android:weightSum="1"
+            android:background="@drawable/round"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/community"
+                android:padding="4dp"
+                android:id="@+id/comunity"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="110dp"
+
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:scaleType="centerCrop"
+
+            >
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <androidx.viewpager2.widget.ViewPager2
+
+                    android:id="@+id/sliderViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    />
+
+
+
+                <LinearLayout
+                    android:id="@+id/layoutIndicators"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal"/>
+
+            </FrameLayout>
+
+
+            <!--<androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/happy_birthday"
+                    android:scaleType="centerCrop"
+                    />
+
+
+            </androidx.cardview.widget.CardView>-->
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

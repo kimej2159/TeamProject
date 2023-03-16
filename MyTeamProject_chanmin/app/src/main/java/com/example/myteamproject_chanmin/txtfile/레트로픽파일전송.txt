@@ -1,0 +1,44 @@
+   RequestBody fileBody = RequestBody.create(MediaType.parse("image/jpeg"), new File(img_path));
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", "test.jpg", fileBody);
+            ApiInterface apiInterface = ApiClient.getApiclient().create(ApiInterface.class);
+            apiInterface.sendFile(filePart).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+
+
+--------------------------------------------------------
+@POST("file.f")
+    @Multipart
+    Call<String> sendFile(@Part MultipartBody.Part file ); // @FieldMap 접속 되고 추가 (파라메터)
+
+--------------텍스트와 파일 함께 전송
+
+@POST("{path}")     // localhost/middle/{path}
+    @Multipart  // <--  @FormUrlEncoded 사용 금지됨, @Path 어노테이션을 써줘야함.
+    Call<String> connFilesPost(@Path("path") String url
+            , @Part("param") RequestBody param  //데이터 부분
+            , @Part List<MultipartBody.Part> file //파일부분
+    );
+
+-------------
+
+  //Multipart로 데이터 동시에 보내서 요청
+    public RequestBody stringToRequest(){
+        RequestBody data = null;
+        if(!params.isEmpty()){
+            data = RequestBody.create(
+                    MediaType.parse("multipart/form-data"), new Gson().toJson(
+                            params.get("param")
+                    )
+            );
+        }
+        return data;
+    }
