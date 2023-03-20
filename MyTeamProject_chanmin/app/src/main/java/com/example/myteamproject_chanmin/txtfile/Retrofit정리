@@ -1,0 +1,23 @@
+Retrofit API ( 정리 ) : 실무에서 많이 사용되는 API
+
+-안드로이드 => DB (접근x)
+-미들웨어 : 안드로이드 => ※미들웨어 ( Spring,Servlet ) ※=> DB
+Url 요청 시 DB에 대신 접근 해서 정보를 return 줄수있는 툴 , 프로젝트를 의미함
+
+-미들웨어 까지 접근하는 방식도 다양함.
+안드 => http 요청을 쉽게 하게 만든것
+종류: Volley , HttpClient(사용↓) , Retrofit( 가장 많이 사용 , 현업 )
+
+
+※ 앱에서 해줘야할것 설정 ( 필수 )
+-앱에서 네트워크 통신을 구현하려면 Androidmanifests.xml에 권한이 필요하다 (인터넷)
+-usesCleartextTraffic = true => 앱에서 기본적으로 Http형태의 Url요청을 전부 막아놨음
+사용하려면 해당하는 기능을 풀어줘야한다 (Androidmanifests.xml)
+
++Retrofit : https://square.github.io/retrofit/ ( 공식 사이트 )
+
+
+- ApiInterface 만들기
+- ApiClient <- 재사용하기 편하게 하려고 만듬.
+
+- 연동 테스트
