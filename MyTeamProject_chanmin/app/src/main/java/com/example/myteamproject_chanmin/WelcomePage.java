@@ -19,6 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.bumptech.glide.Glide;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,6 +60,8 @@ public class WelcomePage extends Fragment {
 
         ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.welcomepage,
                 container, false);
+
+
 
 
 
