@@ -30,7 +30,7 @@ public class No2_1Activity extends AppCompatActivity {
         Button dudug = findViewById(R.id.dudug);
         dudug.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent4 = new Intent(getApplicationContext(), MainActivity.class);
 
                 startActivity(intent4);
@@ -38,9 +38,6 @@ public class No2_1Activity extends AppCompatActivity {
         });
 
 
-
-
-            setContentView(R.layout.activity_no2_1_timer);
 
             timeCountSettingLV = (LinearLayout)findViewById(R.id.timeCountSettingLV);
             timeCountLV = (LinearLayout)findViewById(R.id.timeCountLV);

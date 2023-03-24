@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,7 +16,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activityfile.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +29,7 @@
                 android:value="" />
         </activity>
 
-        <activity android:name=".No1Activity"
+        <activity android:name=".activityfile.No1Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.intent.No1Activity"/>
@@ -35,22 +37,29 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".No2Activity"
+        <activity android:name=".activityfile.No2Activity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.intent.No1Activity"/>
+                <action android:name="com.example.intent.No2Activity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".No2_1Activity"
+        <activity android:name=".activityfile.No2_1Activity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.intent.No1Activity"/>
+                <action android:name="com.example.intent.No2_1Activity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activityfile.PlusListActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.intent.PlusListActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
     </application>
-
 </manifest>
