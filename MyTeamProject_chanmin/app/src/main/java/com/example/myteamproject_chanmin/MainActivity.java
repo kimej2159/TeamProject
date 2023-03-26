@@ -179,22 +179,22 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
-                onFragmentSelected("메인화면", welcomePage);
+                onFragmentSelected(" ", welcomePage);
                 break;
             case R.id.nav_centerfind:
-                onFragmentSelected("센터찾기", centerFind);
+                onFragmentSelected(" ", centerFind);
                 break;
             case R.id.nav_teacherfind:
-                onFragmentSelected("강사찾기", teacherFind);
+                onFragmentSelected(" ", teacherFind);
                 break;
             case R.id.nav_toolfind:
-                onFragmentSelected("운동용품", toolsFind);
+                onFragmentSelected(" ", toolsFind);
                 break;
             case R.id.nav_timer:
-                onFragmentSelected("타이머", timer);
+                onFragmentSelected(" ", timer);
                 break;
             case R.id.nav_cumunity:
-                onFragmentSelected("커뮤니티", comunity);
+                onFragmentSelected(" ", comunity);
                 break;
 
         }

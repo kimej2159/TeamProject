@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2. 1에서 만든 DTO에서 내가 보여주고 싶은 데이터를 골라 xml파일을 만든다 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp"
+        app:cardUseCompatPadding="true"
+        android:id="@+id/card_view">
+
+        <LinearLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:weightSum="100">
+
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="30"
+                android:src="@mipmap/ic_launcher_round"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:layout_weight="70"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/tvCenterName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="헬스장이름"
+                    android:textSize="24sp"
+                    android:gravity="center_vertical"
+                    />
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="주소"
+                    android:textSize="24sp"
+                    android:gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/tvTelephoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="전화번호"
+                    android:textSize="24sp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

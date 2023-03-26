@@ -3,6 +3,7 @@ package com.example.myteamproject_chanmin.Common;
 
 import com.example.myteamproject_chanmin.ASyncTask.ApiClient;
 import com.example.myteamproject_chanmin.ASyncTask.ApiInterface;
+import com.example.myteamproject_chanmin.DTO.GymDTO;
 import com.example.myteamproject_chanmin.DTO.MemberDTO;
 import com.google.gson.Gson;
 
@@ -19,7 +20,7 @@ public class CommonMethod {
 
     // 어디에서나 접근이 가능하도록 static으로 정의해 놓는다
     public static String ipConfig = "http://192.168.0.24:8989/app/";
-    public static MemberDTO loginDto = null;
+    public static GymDTO loginDto = null;
 
     // 해당하는 getData라는 메소드를 여러 액티비티와 프래그먼트에서 재활용을 통해
     // Spring에 연결 후 데이터를 가지고 오는 처리를 해야함.
