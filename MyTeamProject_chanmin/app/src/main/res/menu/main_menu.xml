@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="메인화면"/>
+
+        <item
+            android:id="@+id/nav_centerfind"
+            android:title="센터찾기"/>
+
+        <item
+            android:id="@+id/nav_teacherfind"
+            android:title="강사매칭"/>
+
+        <item
+            android:id="@+id/nav_toolfind"
+            android:title="운동용품"/>
+
+        <item
+            android:id="@+id/nav_timer"
+            android:title="타이머"/>
+
+        <item
+            android:id="@+id/nav_cumunity"
+            android:title="커뮤니티"/>
+
+        <item
+            android:id="@+id/nav_cha"
+            android:title="체형분석"/>
+        <item
+            android:id="@+id/nav_mypage"
+            android:title="마이페이지"
+            android:visible="true"/>
+
+
+    </group>
+
+
+
+
+</menu>
