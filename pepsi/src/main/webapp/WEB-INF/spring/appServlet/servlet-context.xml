@@ -19,10 +19,23 @@
 	<resources location="/resources/js/" mapping="/js/**"></resources>
 	<resources location="/resources/images/" mapping="/imgs/**"></resources>
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+		<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<beans:property name="order" value="0"/>
+	</beans:bean>
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions" 
+			value="WEB-INF/views/tiles/config.xml"/>
+	</beans:bean>
+	
+	<beans:bean id='multipartResolver'
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
 	
 	<context:component-scan base-package="com.hanul.pepsi" />

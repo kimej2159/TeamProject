@@ -30,8 +30,6 @@
 
 
 
-
-
 <!-- 2. dbcp객체에 해당하는걸 mybatis 프레임워크를 사용해서 쿼리문을 사용하게 하기위한 설정 필요
 그런 설정을 하기 위한 sqlSessionFactory 생성 , mapper파일 연결 -->
 <bean id="factory_pepsi" class="org.mybatis.spring.SqlSessionFactoryBean">

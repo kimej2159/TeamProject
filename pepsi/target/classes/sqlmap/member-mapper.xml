@@ -4,6 +4,52 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
+<!-- 회원정보변경 -->
+<update id="update">
+update member set
+ pw = #{pw, jdbcType=VARCHAR}, 
+ name = #{name}, 
+ salt = #{salt, jdbcType=VARCHAR},
+ gender = #{gender}, 
+ email = #{email, jdbcType=VARCHAR}, 
+ birth = #{birth, jdbcType=VARCHAR},
+ phone = #{phone, jdbcType=VARCHAR}, 
+ post = #{post, jdbcType=VARCHAR}, 
+ address = #{address, jdbcType=VARCHAR}, 
+ social = #{social, jdbcType=VARCHAR}, 
+ profile = #{profile, jdbcType=VARCHAR}
+where id = #{id}
+</update>
+
+
+<!-- 회원 정보 신규 저장(회원가입) -->
+<insert id="join">
+insert into member(id, pw, name, salt, gender, email, birth, phone, post,
+					address, social, profile)
+values (
+ #{id},
+ #{pw, jdbcType=VARCHAR}, 
+ #{name}, 
+ #{salt, jdbcType=VARCHAR},
+ #{gender}, 
+ #{email, jdbcType=VARCHAR}, 
+ #{birth, jdbcType=VARCHAR},
+ #{phone, jdbcType=VARCHAR}, 
+ #{post, jdbcType=VARCHAR}, 
+ #{address, jdbcType=VARCHAR}, 
+ #{social, jdbcType=VARCHAR}, 
+ #{profile, jdbcType=VARCHAR})
+</insert>
+
+
+<!-- 아이디 존재 여부 조회 -->
+<select id="id_check" resultType="integer">
+select count(*) 
+from member
+where id = #{id}
+</select>
+
+
 <!-- 전체 회원목록조회 -->
 <select id='list' resultType='member.MemberVO'>
 select * from member 
