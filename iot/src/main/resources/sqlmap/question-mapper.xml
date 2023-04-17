@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qu">
+
+<!-- 질문글 댓글 목록 조회 -->
+<select id='commentList' resultType='question.QuestionCommentVO'>
+select qc.*, name
+from question_comment qc inner join member m on qc.writer = m.id
+where question_id = #{question_id}
+order by qc.id desc
+</select>
+
+<!-- 방명록댓글 삭제 -->
+<delete id='commentDelete'>
+delete from question_comment where id = #{id}
+</delete>
+
+<!-- 방명록댓글 변경저장 -->
+<update id='commentUpdate'>
+update question_comment set content = #{content} where id = #{id}
+</update>
+
+
+<!-- 방명록댓글 신규저장 -->
+<insert id='commentInsert'>
+insert into question_comment (content, writer, question_id)
+values (#{content}, #{writer}, #{question_id})
+</insert>
+
+
+
+
+<!-- 선택한 질문글 삭제 -->
+<delete id='delete'>
+delete from question where id = #{id}
+</delete>
+
+
+<!-- 질문글 글 신규저장 -->
+<insert id='insert'>
+insert into question(title, content, writer)
+values (#{title}, #{content}, #{writer})
+<selectKey keyProperty="id" order="AFTER" resultType='integer'>
+select seq_question.currval from dual
+</selectKey>
+</insert>
+
+
+<!-- 질문 글 목록 조회 -->
+<select id='list' resultType='question.QuestionVO'>
+select * from
+(select q.*, name, row_number() over(order by q.id) no  
+from question q inner join member m on q.writer = m.id 
+<include refid="search_where"/>) q
+where no between #{beginList} and #{endList}
+order by no desc
+</select>
+
+<!-- 선택한 질문글 글변경저장 -->
+<update id="update">
+update question set title = #{title}, content  = #{content}
+where id = #{id}
+</update>
+
+<!-- 선택한 질문글 글 조회 -->
+<select id='info' resultType='question.QuestionVO'>
+select q.*, name 
+from question q inner join member m on q.writer = m.id 
+where q.id = #{id}
+</select>
+
+<!-- 선택한 질문글 글 조회수변경 -->
+<update id='read'>
+update question set readcnt = readcnt + 1 where id = #{id}
+</update>
+
+<!-- 총 글의 건수 조회 -->
+<select id='totalcount' resultType='integer'>
+select count(*) from question <include refid="search_where"/>
+</select>
+
+<sql id='search_where'>
+<choose>
+<when test=" search=='all' ">
+where title like '%' || #{keyword} || '%'
+or    content like '%' || #{keyword} || '%'
+or    <include refid="search_writer"/>
+</when>
+<when test=" search=='title' or search=='content' ">
+where ${search} like '%' || #{keyword} || '%'
+</when>
+<when test=" search=='writer' ">
+where <include refid="search_writer"/>
+</when>
+</choose>
+</sql>
+
+<sql id='search_writer'>
+writer in (select id from member where name like '%' || #{keyword} || '%')
+</sql>
+
+</mapper>
+
+
+
+
