@@ -18,15 +18,10 @@
 <bean id="dbcp_pepsi" class="org.apache.commons.dbcp2.BasicDataSource">
 	<property name="driverClassName" value="${db.driver}"/>
 	<property name="url" value="${db.url}"/>
-	<property name="username" value="${android_project.username}"/>
-	<property name="password" value="${android_project.password}"/>
+	<property name="username" value="${pepsi.username}"/>
+	<property name="password" value="${pepsi.password}"/>
 </bean>
-<bean id="dbcp_hanul" class="org.apache.commons.dbcp2.BasicDataSource">
-	<property name="driverClassName" value="${db.driver}"/>
-	<property name="url" value="${db.url}"/>
-	<property name="username" value="${hanul.username}"/>
-	<property name="password" value="${hanul.password}"/>
-</bean>
+
 
 
 
@@ -37,20 +32,16 @@
 	<property name="mapperLocations" 
 		value="classpath:sqlmap/*-mapper.xml"/> 
 </bean>
-<bean id="factory_hanul" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dbcp_hanul" />
-	<property name="mapperLocations" 
-		value="classpath:sqlmap/*-mapper.xml"/> 
-</bean>
+
+
+
+
 
 <!-- 쿼리문 실행 객체 , sqlSessionFactory를 참조해야 함-->
 <bean class="org.mybatis.spring.SqlSessionTemplate">
 	<constructor-arg name="sqlSessionFactory" ref="factory_pepsi" />
 	<qualifier value='pepsi'/>
-</bean>
-<bean class="org.mybatis.spring.SqlSessionTemplate">
-	<constructor-arg name="sqlSessionFactory" ref="factory_hanul" />
-	<qualifier value='hanul'/>
-</bean>
+</bean> 
+
 
 </beans>

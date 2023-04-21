@@ -50,10 +50,6 @@ where id = #{id}
 </select>
 
 
-<!-- 전체 회원목록조회 -->
-<select id='list' resultType='member.MemberVO'>
-select * from member 
-</select>
 
 <!-- 회원 비밀번호 변경 -->
 <update id='change_pw'>

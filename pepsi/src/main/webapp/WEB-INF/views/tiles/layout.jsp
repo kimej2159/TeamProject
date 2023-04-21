@@ -12,7 +12,7 @@
 <c:when test="${category eq 'bo'}"><c:set var='title' value='방명록'/></c:when>
 <%-- <c:when test="${category eq 'changepw'}"><c:set var='title' value='비밀번호변경'/></c:when>
  --%>
- <c:when test="${category eq 'join'}"><c:set var='title' value='회원가입'/></c:when>
+<c:when test="${category eq 'join'}"><c:set var='title' value='회원가입'/></c:when>
 </c:choose>
 
 

@@ -65,15 +65,15 @@ border-radius: 5px;
 					<button type="button" class="btn btn-primary btn-block" id="kakao">카카오로 로그인하기</button>
 	        	</div>	
 					<hr>	
-					<div class="navbar justify-content-center">
-						<ul>
-							<li>
-								<a id='under' href='findpw' >비밀번호 찾기</a>
-								<div class="vr"></div>
-								<a id='under' href='' >회원가입</a>
-							</li>
-						</ul>
-					</div>
+				<div class="navbar justify-content-center">
+					<ul>
+						<li>
+							<a id='under' href='findpw' >비밀번호 찾기</a>
+							<div class="vr"></div>
+							<a id='under' href='join' >회원가입</a>
+						</li>
+					</ul>
+				</div>
               </form>
             </div>
           </div>

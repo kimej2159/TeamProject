@@ -33,7 +33,7 @@ $( function() {
 	var today = new Date();
 	var range = today.getFullYear()-100 + ':' + today.getFullYear();	
 	
-	if( $('.data').length > 0 ){
+	if( $('.date').length > 0 ){
 		$.datepicker.setDefaults({
 			dateFormat: 'yy-mm-dd',
 			
@@ -54,7 +54,7 @@ $( function() {
 		console.log( this.files[0] );
 		var attached = this.files[0];
 		if( attached ){  //선택한 파일이 있는 경우
-			$('#delete-file').css('display', 'inline');
+			$('.delete-file').css('display', 'inline');
 			$('#file-name').text( attached.name );
 			
 			if( $('#preview').length==1 ){ //미리보기할 태그가 있는 경우
@@ -80,12 +80,12 @@ $( function() {
     
     $('#delete-file').click(function(){
 		initAttatch();
-//		$('#file-name').text(''); //보여지는 파일명 없애기
-//		$('#attach-file').val(''); //실제 첨부된 파일정보 삭제
-//		//$('#preview').html('');
-//		//$('#preview img').remove();
-//		$('#preview').empty();
-//		$('#delete-file').css('display', 'none');	
+		$('#file-name').text(''); //보여지는 파일명 없애기
+		$('#attach-file').val(''); //실제 첨부된 파일정보 삭제
+		//$('#preview').html('');
+		//$('#preview img').remove();
+		$('#preview').empty();
+		$('#delete-file').css('display', 'none');	
 	});
 
 }); 
@@ -167,6 +167,7 @@ function initAttatch(){
 	$('#preview').empty();
 	$('#delete-file').css('display', 'none');
 }
+
 //이미지 파일인지 판단
 function isImage( filename ){
 	// abc.abc.txt, abc.png, abc.jpg, abc.PNG ...

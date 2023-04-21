@@ -11,6 +11,7 @@ var member = {
 		else if( name=='email' )	return this.email_status( tag.val() );
 	},
 	
+	//이메일 형식 지정	
 	email_status: function( email ){
 		var reg = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/g;
 		if( email=='' )					return this.common.empty;
@@ -18,8 +19,8 @@ var member = {
 		else                            return this.email.invalid;
 	},
 	email: {
-		valid: { code:'valid', desc:'사용가능한 이메일형식' },
-		invalid: { code:'invalid', desc:'사용할 수 없는 이메일형식' },		
+		valid: { code:'valid', desc:'사용 가능한 이메일형식입니다' },
+		invalid: { code:'invalid', desc:'사용할 수 없는 이메일형식입니다' },		
 	},	
 	
 	id_status:function( id ){
@@ -35,8 +36,8 @@ var member = {
 	id: {
 		invalid : { code:'invalid', desc:'아이디는 영문소문자,숫자만 입력' },
 		valid : { code:'valid', desc:'아이디 중복확인 하세요' },
-		usable: { code:'valid', desc:'사용가능한 아이디' },
-		unUsable: { code:'invalid', desc:'이미 사용중인 아이디' },
+		usable: { code:'valid', desc:'사용가능한 아이디입니다' },
+		unUsable: { code:'invalid', desc:'이미 사용중인 아이디입니다' },
 	},
 	
 	pw_status: function( pw ){

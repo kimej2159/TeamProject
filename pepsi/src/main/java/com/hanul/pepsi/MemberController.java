@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import common.CommonUtility;
 import member.MemberServiceImpl;
@@ -28,10 +29,44 @@ public class MemberController {
 	private String NAVER_SECRET ="5ZIZMjV2uk";
 	
 
+	//아이디 중복 확인 
+	@ResponseBody @RequestMapping("/id_check")
+	public boolean id_check(String id) {
+		//화면에서 입력한 아이디가 DB에 존재하는지 존재 여부를 확인 
+		//결과가  true/false 처리이므로 boolean 형태
+		return service.member_id_check(id);
+	}
+	
+	//회원가입 처리
+	@ResponseBody @RequestMapping(value="/join" , produces="text/html; charset=utf-8")
+	public String join(MemberVO vo , HttpServletRequest request, MultipartFile file ) {
+		
+		
+		//화면에서 입력한 회원정보로 DB에 회원가입 처리
+		//비번 암호화 처리 필요 : 암호화 용 salt를 사용해 입력 비번을 암호화 한다
+		String salt = common.generateSalt();
+		String pw = common.getEncrypt(vo.getPw(), salt);
+		vo.setSalt(salt);
+		vo.setPw(pw);
+		StringBuffer msg = new StringBuffer("<script>");
+		if( service.member_join(vo)==1 ) {
+			request.getSession().setAttribute("loginInfo", vo);
+			msg.append("alert('회원가입을 축하합니다!'); location='").append( common.appURL(request)).append("' ");
+		}else {
+			msg.append("alert('회원가입에 실패하였습니다'); history.go(-1)");
+		}
+		msg.append("</script>");
+		return msg.toString();
+	}
+	
+	
+	
+	
 	//회원가입 화면 요청
 	@RequestMapping("/member")
-	public String member() {
-		return "member/join";
+	public String member(HttpSession session) {
+		session.setAttribute("category", "join");
+		return "default/member/join";
 	}
 	
 	//카카오 로그인 처리 요청
@@ -117,6 +152,7 @@ public class MemberController {
 		url.append("&client_id=").append(NAVER_ID);
 		url.append("&state=").append(state);
 		url.append("&redirect_uri=").append( common.appURL(request) ).append("/naverCallback");
+		url.append("&auth_type=reauthenticate");
 		
 		return "redirect:" + url.toString();
 	}
