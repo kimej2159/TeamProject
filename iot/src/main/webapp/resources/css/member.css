@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.box { 
+	width: 300px;
+	margin: 20px  auto;
+	border: 1px solid #aaa;
+	padding: 30px 50px;	
+}
+
+.box li:not(:first-child) { 
+	margin: 10px 0;	
+}
+
+.box input {
+	width:  100%; height: 38px;    box-sizing: border-box;
+}
+.box [type=button] {
+	background-color: #3367d6; color: #fff; border: none;
+	cursor: pointer;
+}

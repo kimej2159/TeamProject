@@ -2,11 +2,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
-<head>
-	<title>Home</title>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>한울핏</title>
+    </head>
+    
+   <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/assets/img/home-bg.JPG')">
+	<div class="container position-relative px-4 px-lg-5">
+	    <div class="row gx-4 gx-lg-5 justify-content-center">
+	        <div class="col-md-10 col-lg-8 col-xl-7">
+	            <div class="site-heading"  data-aos="fade-up">
+	                <h1><span class="main_color">한울핏</span>과 함께 건강한 운동을!</h1>
+	                <span class="subheading">강사매칭, 센터찾기, 커뮤니티까지!</span>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+           
+
+</header> 
 <body>
-<jsp:include page="/WEB-INF/views/include/header.jsp"/>
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -69,7 +84,6 @@
                 </div>
             </div>
         </div>
-<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
