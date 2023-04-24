@@ -1,0 +1,10 @@
+#db.driver = oracle.jdbc.driver.OracleDriver
+#db.url = jdbc:oracle:thin:@127.0.0.1:1521:xe
+db.driver = net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+db.url = jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:xe
+android_project.username = "android project"
+android_project.password = 0000
+hanul.username = hanul
+hanul.password = 0000
+pepsi.username = ateam
+pepsi.password = ateam

@@ -40,7 +40,10 @@ public class MemberController {
 	//회원가입 처리
 	@ResponseBody @RequestMapping(value="/join" , produces="text/html; charset=utf-8")
 	public String join(MemberVO vo , HttpServletRequest request, MultipartFile file ) {
-		
+		//첨부된 파일이 있는 경우
+		if( ! file.isEmpty()) {
+			vo.setProfile(common.fileUpload(file, "profile", request));
+		}
 		
 		//화면에서 입력한 회원정보로 DB에 회원가입 처리
 		//비번 암호화 처리 필요 : 암호화 용 salt를 사용해 입력 비번을 암호화 한다
@@ -50,6 +53,12 @@ public class MemberController {
 		vo.setPw(pw);
 		StringBuffer msg = new StringBuffer("<script>");
 		if( service.member_join(vo)==1 ) {
+			//이메일로 회원가입축하 메시지 보내기
+			String filename = request.getSession().getServletContext()
+					.getRealPath("resources/js/회원가입축하.pdf");
+				common.sendWelcome(vo, filename);
+			
+			//회원가입 후 바로 로그인
 			request.getSession().setAttribute("loginInfo", vo);
 			msg.append("alert('회원가입을 축하합니다!'); location='").append( common.appURL(request)).append("' ");
 		}else {

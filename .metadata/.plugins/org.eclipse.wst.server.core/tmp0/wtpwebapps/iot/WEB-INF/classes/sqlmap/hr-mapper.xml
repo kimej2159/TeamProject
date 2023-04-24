@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hr">
+
+<!-- 신규사원정보저장 -->
+<insert id='insert'>
+insert into employees
+(employee_id, last_name, first_name, email, phone_number
+	, hire_date, salary, job_id, department_id, manager_id)
+values
+(employees_seq.nextval, #{last_name}, #{first_name}, #{email}
+, #{phone_number}, #{hire_date}, #{salary}, #{job_id}
+, <choose>
+	<when test='department_id==-1'>null</when>
+	<otherwise>#{department_id}</otherwise>
+  </choose>
+, <choose>
+	<when test='manager_id==-1'>null</when>
+	<otherwise>#{manager_id}</otherwise>
+  </choose>
+)	
+</insert>
+
+<!-- 사원의 관리자사원목록조회 -->
+<select id='hr_managers' resultType='hr.EmployeeVO'>
+select employee_id, last_name||' '||first_name name
+from employees
+order by name
+</select>
+
+<!-- 사원이 소속된 부서목록조회 -->
+<select id='employee_departments' resultType='hr.DepartmentVO'>
+select distinct department_id
+		, nvl(department_name, '소속없음') department_name
+from employees e left outer join departments d using(department_id)
+order by 1
+</select>
+
+<!-- 선택한 사원정보삭제 -->
+<delete id='delete'>
+delete from employees where employee_id = #{employee_id}
+</delete>
+
+<!-- 선택한 사원정보조회 -->
+<select id='info' resultType='hr.EmployeeVO'>
+select e.*, last_name||' '||first_name name, department_name, job_title 
+from employees e left outer join departments d 
+					on e.department_id=d.department_id
+	 inner join jobs j on j.job_id = e.job_id
+where employee_id = #{employee_id}
+</select>
+
+
+<!-- 사원정보변경저장 -->
+<update id="update">
+update employees 
+set last_name=#{last_name}, first_name=#{first_name}
+	, email=#{email}, phone_number=#{phone_number}, salary=#{salary}
+	, hire_date=#{hire_date}
+	, job_id=#{job_id}
+	<if test='department_id == -1'>, department_id=null</if>
+	<if test='department_id != -1'>, department_id=#{department_id}</if>
+where employee_id=#{employee_id}	
+</update>
+
+<!-- 회사전체부서목록조회 -->
+<select id='hr_departments' resultType='hr.DepartmentVO'>
+select * from departments order by department_name
+</select>
+
+<!-- 회사전체업무목록조회 -->
+<select id='hr_jobs' resultType='hr.JobVO'>
+select * from jobs order by job_title
+</select>
+
+
+<!-- 사원목록조회 -->
+<select id='list' resultType='hr.EmployeeVO'>
+select e.*, job_title, department_name
+		, last_name || ' ' || first_name name
+from departments d right outer join employees e
+			on e.department_id = d.department_id
+inner join jobs j on j.job_id = e.job_id
+<choose>
+	<when test="department_id == 0">
+		where e.department_id is null
+	</when>
+	<when test="department_id != -1">
+		where e.department_id = #{department_id}
+	</when>	
+</choose>
+order by employee_id
+
+<!-- 
+<if test='department_id == 0'>
+where e.department_id is null
+</if>
+<if test='department_id != -1'>
+where e.department_id = #{department_id}
+</if>
+ -->
+
+<!--  
+from employees e inner join jobs j on j.job_id = e.job_id
+left outer join departments d 
+	on e.department_id = d.department_id 
+-->  
+</select>
+
+</mapper>  
