@@ -33,6 +33,7 @@ border-radius: 5px;
 	background-color: black;
 	margin: 4px;
 }
+
 span { color:#ff0000; margin-right: 5px; }
 </style>
 
@@ -98,7 +99,7 @@ span { color:#ff0000; margin-right: 5px; }
 			</div>
 			<div class="d-flex justify-content-between">
 				<span id='preview' class='mt-4'></span>
-				<div class="delete-file">
+				<div id="delete-file">
 					<a><i class="font-img-r fa-regular fa-trash-can"></i></a>
 				</div>	
 			</div>
@@ -126,8 +127,11 @@ span { color:#ff0000; margin-right: 5px; }
 			</div>
 		</div>
 	</form>
-		<div class="form-group">
-			<button class="my-2 btn btn-primary btn-block origin btn-join" >회원가입</button>
+		<div class="position-relative">
+			<div class="position-absolute top-100 start-50 translate-middle ">
+<!-- 			<button class="mt-5 btn btn-primary btn-block origin btn-join" >회원가입</button> -->
+			<button type="button" class="mt-5 btn btn-primary btn-lg origin btn-join">회원가입</button>
+			</div>
 		</div>
 		
 </div>

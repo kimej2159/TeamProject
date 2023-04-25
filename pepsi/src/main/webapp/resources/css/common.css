@@ -32,9 +32,6 @@ ul { list-style: none; align-items: center; padding:0 ;}
 .invalid{ color: #ff0000; font-size: 16px }
 .valid{ color: #008000; font-size: 16px }
 
-input[type=file]{
-	display: none;
-}
 .font-img { font-size: 20px; }
 .font-img-r { font-size: 20px;  color: #ff0000; }
 .font-img-g { font-size: 20px;  color: #008000; }
@@ -42,5 +39,7 @@ input[type=file]{
 .font-img-c { font-size: 20px;  color: #333; }
 
 .date + #btn-delete { position: relative;  right: 33px }
+
+
 
 
