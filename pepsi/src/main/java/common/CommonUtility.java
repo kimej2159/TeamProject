@@ -76,9 +76,11 @@ public class CommonUtility {
 		//해당 날짜의 폴더를 만들어 그 안에 업로드한 파일을 저장하도록
 		//반환되는 물리적 위치 : D:\STUDY_SPRING\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\pepsi\resources
 		
-		String path = request.getSession().getServletContext().getRealPath("resources");
+//		String path = request.getSession().getServletContext().getRealPath("resources");
+//		String upload = "/upload/" + category + new SimpleDateFormat("/yyyy/MM/dd").format(new Date());
+		String path = "d://app/" + request.getContextPath();
 		String upload = "/upload/" + category + new SimpleDateFormat("/yyyy/MM/dd").format(new Date());
-		
+				
 		//D:\STUDY_SPRING\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\pepsi\resources/upload/profile/2023/04/24
 		path += upload;
 		
