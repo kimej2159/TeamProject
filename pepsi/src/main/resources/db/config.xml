@@ -42,6 +42,4 @@
 	<constructor-arg name="sqlSessionFactory" ref="factory_pepsi" />
 	<qualifier value='pepsi'/>
 </bean> 
-
-
 </beans>

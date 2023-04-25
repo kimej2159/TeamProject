@@ -124,7 +124,7 @@ $(document).on('change', '.attach-file', function(){
 }).on('click', '.delete-file', function(){
 	//선택한 삭제버튼에 해당하는 첨부파일태그 삭제
 	var _div = $(this).closest('div');
-	removedFile( _div );
+	if ($('[name=removed]').length > 0 )removedFile( _div );
 	_div.remove();
 	
 })
