@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+<!-- dpcon.properties 파일을 사용하겠다는 선언 -->
+
+<!-- dpcon.properties 파일의 물리적인 위치 선언 -->
+<context:property-placeholder location="classpath:db/dbcon.properties"/>
+
+<!-- mapper에 선언한 쿼리문을 dbcp, 연결된 객체에 가져와 사용하기 위한 처리 -->
+<!-- 1. configure 파일에 있는 애를 등록해 놓은 dbcp객체 -->
+<!-- dbcp객체 : 웹 컨테이너(WAS)가 실행되면서 DB와 미리 connection(연결)을 해놓은 객체들을 pool에 저장해두었다가, -->
+<!-- 클라이언트 요청이 오면 connection을 빌려주고, 처리가 끝나면 실행된 상태로 다시 connection을 반납받아 pool에 저장하는 방식을 말한다. -->
+<bean id="dbcp_pepsi" class="org.apache.commons.dbcp2.BasicDataSource">
+	<property name="driverClassName" value="${db.driver}"/>
+	<property name="url" value="${db.url}"/>
+	<property name="username" value="${pepsi.username}"/>
+	<property name="password" value="${pepsi.password}"/>
+</bean>
+
+
+
+
+<!-- 2. dbcp객체에 해당하는걸 mybatis 프레임워크를 사용해서 쿼리문을 사용하게 하기위한 설정 필요
+그런 설정을 하기 위한 sqlSessionFactory 생성 , mapper파일 연결 -->
+<bean id="factory_pepsi" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dbcp_pepsi" />
+	<property name="mapperLocations" 
+		value="classpath:sqlmap/*-mapper.xml"/> 
+</bean>
+
+
+
+
+
+<!-- 쿼리문 실행 객체 , sqlSessionFactory를 참조해야 함-->
+<bean class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg name="sqlSessionFactory" ref="factory_pepsi" />
+	<qualifier value='pepsi'/>
+</bean> 
+
+
+</beans>

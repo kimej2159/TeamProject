@@ -32,7 +32,7 @@
 			<!-- 로그인하지 않은 경우 -->
 			<c:if test='${empty loginInfo}'>
 	   		<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="login">로그인</a></li>
-	        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="join">회원가입</a></li>
+	        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="member">회원가입</a></li>
 	        </c:if>
 	        
 			<!-- 로그인된 경우 -->
@@ -55,7 +55,7 @@
 			 <li class="nav-item"><a class="${category eq '' ? 'active' : ''} nav-link px-lg-3 py-3 py-lg-4" href="">센터찾기</a></li>
              <li class="nav-item"><a class="${category eq '' ? 'active' : ''} nav-link px-lg-3 py-3 py-lg-4" href="">강사찾기</a></li>
              <li class="nav-item"><a class="${category eq 'bo' ? 'active' : ''} nav-link px-lg-3 py-3 py-lg-4" href="list.bo">커뮤니티</a></li>
-			
+			 <li class="nav-item"><a class="${category eq 'no' ? 'active' : ''} nav-link px-lg-3 py-3 py-lg-4" href="<c:url value="/"/>list.no">공지사항</a></li>			
 		</ul>
 	</div>
           

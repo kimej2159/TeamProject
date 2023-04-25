@@ -18,6 +18,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.mail.EmailAttachment;
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
@@ -28,6 +30,52 @@ import member.MemberVO;
 @Service
 public class CommonUtility {
 	
+	//회원가입축하 이메일 보내기
+	public void sendWelcome(MemberVO vo, String welcome) {
+		HtmlEmail email =  new HtmlEmail();
+		email.setDebug(true);
+		email.setCharset("utf-8");
+		
+		email.setHostName("smtp.naver.com");
+		//보내는 이인 관리자로 로그인: 아이디/비번 입력
+		email.setAuthentication("kimej2159", "kej20181664!");		
+		email.setSSLOnConnect(true); //로그인하기
+		
+		try {
+			//보내는이
+		email.setFrom("kimej2159@naver.com", "한울핏");
+		email.addTo(vo.getEmail(), vo.getName()); //받는이:회원가입하는사람
+		
+		email.setSubject(vo.getName() + "님 회원가입을 축하합니다!!");
+		StringBuffer msg = new StringBuffer();
+		msg.append("<html>");
+		msg.append("<body>");
+		msg.append("<h3><a target='_blank' http://112.164.58.220:8850'>한울핏 홈페이지</a></h3>");
+		msg.append("<div>한울핏과 함께 건강한 운동을!</div>");
+		msg.append("<p>눈누난나</p>");
+		msg.append("</body>");
+		msg.append("</html>");
+		email.setHtmlMsg(msg.toString());
+		
+		//축하파일 첨부하기
+		EmailAttachment file = new EmailAttachment(); //첨부파일객체 생성
+		file.setPath( welcome );
+		email.attach(file);
+
+//		file = new EmailAttachment(); //첨부파일객체 생성
+//		file.setPath( welcome );
+//		email.attach(file);
+		
+		email.send(); //메일보내기
+		
+		}catch(EmailException e) {
+			
+		}
+	}
+	
+	
+	
+		
 	//실행되고 있는 app의 url
 	public String appURL(HttpServletRequest request) {
 		//  http://localhost:99/naverCallback
