@@ -32,4 +32,6 @@ ul { list-style: none; align-items: center; padding:0 ;}
 .invalid{ color: #ff0000; font-size: 16px }
 .valid{ color: #008000; font-size: 16px }
 
-
+input[type=file]{
+	display: none;
+}

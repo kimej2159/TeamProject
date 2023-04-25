@@ -6,11 +6,10 @@
 <c:choose>
 <c:when test='${category eq "login"}'><c:set var='title' value='로그인'/></c:when>
 <c:when test='${category eq "changepw"}'><c:set var='title' value='비밀번호 변경'/></c:when>
-<<<<<<< HEAD
-=======
+
 <c:when test='${category eq "findpw"}'><c:set var='title' value='비밀번호 찾기'/></c:when>
 <c:when test='${category eq "member"}'><c:set var='title' value='회원가입'/></c:when>
->>>>>>> kimeunji
+
 </c:choose>
 <head>
 <meta charset="utf-8" />
