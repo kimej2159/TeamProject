@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BoardDAO implements BoardService {
 
-	@Autowired @Qualifier("pepsi") 
-	private SqlSession sql;
+
+	@Autowired @Qualifier("pepsi") private SqlSession sql;
+
 	
 	@Override
 	public int board_insert(BoardVO vo) {
