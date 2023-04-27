@@ -56,7 +56,7 @@
 		%>
 		<!-- Main Content-->
 		<div>
-		
+<!-- 		<div></div> -->
 					<h1 style=" margin: 0 auto;">● 헬스장 정보 한눈에 보기</h1>
 					<div class="gym-detail-all">
 						<div class="gym-detail">
