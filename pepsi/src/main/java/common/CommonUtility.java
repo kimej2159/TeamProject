@@ -2,9 +2,11 @@ package common;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -12,12 +14,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import member.MemberVO;
@@ -100,6 +105,46 @@ public class CommonUtility {
 		return  appURL(request) + upload + "/" + uuid;
 		}
 	
+	
+	
+	// 첨부파일 다운로드 : 클라이언트에 파일저장 - 클라이언트한테 쓰기작업을 하는거임
+	public void fileDownload(String filename, String filepath, HttpServletRequest request, HttpServletResponse response) {
+		
+		// DB 에 저장된 경로와 다르게 저장이 되어야함
+		filepath = filepath.replace(appURL(request), "d://app/" + request.getContextPath());
+		
+		// 실제 물리적 파일이 존재하면 클라이언트에 저장
+		File file = new File(filepath);
+		if( file.exists()) {
+			
+			String mime = request.getSession().getServletContext().getMimeType(filename);
+			response.setContentType(mime);
+			
+			try { 
+				
+			filename = URLEncoder.encode(filename, "utf-8"); // 한글깨짐방지
+			response.setHeader("content-disposition","attachment; filename=" + filename);
+				
+				ServletOutputStream out = response.getOutputStream();
+				FileCopyUtils.copy( new FileInputStream(file), out );
+				out.flush();
+				
+			} catch (Exception e) {
+				
+			}
+		}
+	}
+	
+	// 첨부된 파일 삭제
+	public void file_delete(String filepath, HttpServletRequest request) {
+		// DB 에 저장된 경로와 다르게 저장이 되어야함
+		
+		if ( filepath != null ) {
+		filepath = filepath.replace(appURL(request), "d://app/" + request.getContextPath());
+		File file = new File( filepath );
+		if ( file.exists() ) file.delete();
+		}
+	}
 	
 	
 	
