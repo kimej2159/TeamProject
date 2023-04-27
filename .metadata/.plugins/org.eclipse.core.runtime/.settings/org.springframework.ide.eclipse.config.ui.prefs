@@ -1,9 +1,0 @@
-//com.springsource.config.ui.prefs.activePageIndex\:/MyProjectX/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/iot/src/main/resources/db/config.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/iot/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/iot/src/main/webapp/WEB-INF/spring/root-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/pepsi/src/main/resources/db/config.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/pepsi/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/pepsi/src/main/webapp/WEB-INF/spring/root-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-//com.springsource.config.ui.prefs.activePageIndex\:/web/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<activePage index\="0"/>
-eclipse.preferences.version=1

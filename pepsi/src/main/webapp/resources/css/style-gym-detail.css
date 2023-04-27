@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* 이미지 */
+.img-fluid {
+  height: auto;
+  
+}
+
+
+
+
+.gym-detail img {
+	 border-radius: 5px 0px 0px 5px;
+    width: 60%;
+    float: left;
+    display: inline-block;
+}
+
+.gym-detail-content {
+    width: 40%;
+    float: right;
+}
+
+
+
+.gym-detail {
+    width: 1180px;
+    flex-direction: row;
+    display: flex;
+    border : 2px solid lightgray;
+    border-radius: 5px;
+    margin: 0 auto;
+    
+}
+
+.gym-detail-all {
+	width: 1200px;
+	height : 1200px;
+	background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align :middle;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+}
+
+.gym-detail-content {
+	text-align: left;
+}
+
+
+@font-face {
+	font-family: 'GangwonEduPowerExtraBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+main h1 , h2, h3, h4 , h5, h6 , p ,tr , th , td{
+	font-family: 'GangwonEduPowerExtraBoldA', sans-serif !important;
+}
+
+ table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+
+.row {
+	text-align: center; 	
+}

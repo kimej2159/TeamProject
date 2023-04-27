@@ -22,6 +22,8 @@ import common.CommonUtility;
 public class BoardController {
 	
 	@Autowired private BoardServiceImpl service;
+	@Autowired private CommonUtility common2;
+	
 	
 	//게시판 글 목록 화면요청
 	  
