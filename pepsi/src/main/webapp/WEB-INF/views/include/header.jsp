@@ -55,7 +55,7 @@
 			 
 			 <li class="nav-item"><a ${category eq '' ? "class='active'" : ''} class="nav-link px-lg-3 py-3 py-lg-4" href="">센터찾기</a></li>
              <li class="nav-item"><a ${category eq '' ? "class='active'" : ''} class="nav-link px-lg-3 py-3 py-lg-4" href="">강사찾기</a></li>
-             <li class="nav-item"><a ${category eq '' ? "class='active'" : ''} class="nav-link px-lg-3 py-3 py-lg-4" href="">커뮤니티</a></li>
+             <li class="nav-item"><a ${category eq 'bo' ? "class='active'" : ''} class="nav-link px-lg-3 py-3 py-lg-4" href="list.bo">커뮤니티</a></li>
              <li class="nav-item"><a ${category eq 'no' ? "class='active'" : ''} class="nav-link px-lg-3 py-3 py-lg-4" href="<c:url value="/"/>list.no">공지사항</a></li>
 			
 		</ul>

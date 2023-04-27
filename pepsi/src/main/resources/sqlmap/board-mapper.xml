@@ -6,14 +6,35 @@
 
 <!-- 총 글의 건수 조회 -->
 <select id='totalCount' resultType='integer'>
-select count(*) from board
+select count(*) from board <include refid="search_where"></include>
 </select>
+
+<sql id='search_where'>
+<choose>
+<when test=" search=='all' ">
+where title like '%' || #{keyword} || '%'
+or 	  content like '%' || #{keyword} || '%'
+or 	  writer in (select id from member where name like '%' || #{keyword} || '%')
+</when>
+<when test=" search=='title' or search=='content' ">
+where ${search} like '%' || #{keyword} || '%'
+</when>
+<when test=" search=='writer' ">
+where <include refid="search_writer"></include>
+</when>
+</choose>
+</sql>
+
+<sql id='search_writer'>
+writer in (select id from member where name like '%' || #{keyword} || '%')
+</sql>
 
 <!-- 글 목록 조회 -->
 <select id='list' resultType='board.BoardVO'>
-select * from
-(select b.*, name, row_number() over(order by b.id) no
-from board b inner join member m on b.writer = m.id) b
+select ( select count(*) from board_file 
+			where board_id=b.id) filecnt, b.* 
+from (select b.*, name, row_number() over(order by b.id) no
+		from board b inner join member m on b.writer = m.id <include refid="search_where"></include>) b
 where no between #{beginList} and #{endList}
 order by no desc
 </select>

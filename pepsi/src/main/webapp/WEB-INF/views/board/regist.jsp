@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <style>
 #preview img, .preview img {max-height: 30px;}
+.btn{ color: #ffffff;}
+.h1title{font-size: 26px;}
+input[type=file].attach-file {display: none;}
 </style>
 </head>
 <body>
@@ -21,7 +24,7 @@
             <div class="col-md-10">
                         
 	
-	<h3> 새글쓰기</h3>
+	<h1 class='h1title'> 새글쓰기</h1>
 	<form method='post' action="insert.bo" enctype='multipart/form-data'>
 	<input type='hidden' name='writer' value='${loginInfo.id}'>
 		<table class='table'>
@@ -55,7 +58,7 @@
 	</form>
 	<div class="d-grid gap-2 d-md-block">
 	  <a class="btn btn-primary arrow-middle btn-save" >저장</a>
-	  <a class="btn btn-light arrow-middle"  href='list.bo'>취소</a>
+	  <a class="btn btn-secondary arrow-middle"  href='list.bo'>취소</a>
 	</div>
         
                
