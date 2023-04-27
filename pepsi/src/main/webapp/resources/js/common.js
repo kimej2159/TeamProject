@@ -54,7 +54,7 @@ $( function() {
 		console.log( this.files[0] );
 		var attached = this.files[0];
 		if( attached ){  //선택한 파일이 있는 경우
-			$('.delete-file').css('display', 'inline');
+			$('#delete-file').css('display', 'inline');
 			$('#file-name').text( attached.name );
 			
 			if( $('#preview').length==1 ){ //미리보기할 태그가 있는 경우
@@ -122,9 +122,10 @@ $(document).on('change', '.attach-file', function(){
 	}
 	
 }).on('click', '.delete-file', function(){
+	console.log('delete')
 	//선택한 삭제버튼에 해당하는 첨부파일태그 삭제
 	var _div = $(this).closest('div');
-	removedFile( _div );
+	if( $('[name=removed]').length > 0 ) removedFile( _div );
 	_div.remove();
 	
 })

@@ -57,4 +57,9 @@
 		<error-code>500</error-code>
 		<location>/error</location>
 	</error-page>
+	
+	<session-config>
+	<session-timeout>120</session-timeout>
+	</session-config>
+	
 </web-app>
