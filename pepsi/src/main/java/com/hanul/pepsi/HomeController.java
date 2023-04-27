@@ -1,7 +1,6 @@
 package com.hanul.pepsi;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import common.CommonUtility;
 import member.MemberServiceImpl;
+import member.MemberVO;
 
 
 @Controller
@@ -28,15 +28,14 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
+		/*
+		 * List<MemberVO> list = member.member_list(); for(MemberVO vo : list) { if(
+		 * vo.getSocial()!=null ) continue; if( vo.getSalt()!=null ) continue; String
+		 * salt = common.generateSalt(); //솔트를 사용해 비번을 암호화 String pw =
+		 * common.getEncrypt(vo.getPw(), salt); vo.setPw(pw); vo.setSalt(salt);
+		 * member.member_change_pw(vo); }
+		 * 
+		 */ 
 		session.removeAttribute("category");
 		return "home";
 	}

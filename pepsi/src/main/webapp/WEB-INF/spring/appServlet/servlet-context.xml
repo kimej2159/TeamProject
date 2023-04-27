@@ -40,8 +40,9 @@
 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</beans:bean>
 	
-	<context:component-scan base-package="com.hanul.pepsi" />
+	<context:component-scan base-package="com.hanul.pepsi, board" />
 	
+
 	
 	
 </beans:beans>
