@@ -62,8 +62,7 @@ public class BoardController {
 		// 화면에서 입력한 정보로 DB에 신규저장
 		service.board_insert(vo);
 		
-		// 화면연결
-		
+		// 화면연결		
 		return "redirect:list.bo";
 	}
 	
@@ -85,6 +84,34 @@ public class BoardController {
 		}
 		return list;
 	}
+	
+	
+	// 선택한 방명록 정보화면 요청
+		@RequestMapping("/info.bo")
+		public String info( Model model, int id, BoardPageVO page) {
+			
+			// 조회수 증가처리
+			service.board_read(id);
+			
+			// 선택한 글의 정보를 DB에서 조회해온다
+			BoardVO vo = service.board_info(id);
+			
+			// 화면에 출력할 수 있도록 Model에 담는다
+			model.addAttribute("vo", vo);
+			model.addAttribute("page", page);
+			// 줄바꿈적용
+			model.addAttribute("crlf", "\r\n");
+			model.addAttribute("lf", "\n");
+			
+			return "board/info";
+		}
+		
+		
+		
+		
+		
+		
+	
 	
 		 
 		 

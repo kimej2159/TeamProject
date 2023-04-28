@@ -36,14 +36,16 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public BoardVO board_info(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVO vo = sql.selectOne("bo.info", id);
+		vo.setFileInfo( sql.selectList("bo.fileList", id) );
+		
+		return vo;
 	}
 
 	@Override
 	public int board_read(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return sql.update("bo.read", id);
 	}
 
 	@Override
