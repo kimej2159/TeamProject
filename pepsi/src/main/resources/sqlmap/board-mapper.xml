@@ -57,4 +57,49 @@ values( #{id}, #{info.filename}, #{info.filepath} )
 </foreach>
 </insert>
 
+
+<!-- 선택한 방명록 글의 조회 -->
+<select id="info" resultType='board.BoardVO'>
+select b.*, name
+from board b inner join member m on b.writer = m.id
+where b.id = #{id}
+</select>
+
+<!-- 선택한 방명록 글 조회수 변경 -->
+<update id='read'>
+update board set readcnt = readcnt + 1 where id = #{id}
+</update>
+
+<!-- 선택한 방명록 글에 대한 첨부파일 조회 -->
+<select id='fileList' resultType='board.BoardFileVO'>
+select * from board_file where board_id = #{id}
+</select>
+
+<!-- 선택한 방명록 첨부파일 정보 조회 -->
+<select id='fileInfo' resultType='board.BoardFileVO'>
+select * from board_file where id = #{id}
+</select>
+
+<!-- 선택한 방명록 글 삭제 -->
+<delete id='delete'>
+delete from board where id = #{id}
+</delete>
+
+<!-- 선택한 방명록 글 변경 저장 -->
+<update id='update'>
+update board set title = #{title}, content = #{content}
+where id = #{id}
+</update>
+
+<!-- 선택한 방명록 삭제대상 파일정보 조회 -->
+<select id='fileRemoved' resultType='board.BoardFileVO'>
+select * from board_file where id in ( ${removed} )
+</select>
+
+<!-- 파일정보삭제 -->
+<delete id='fileDelete'>
+delete from board_file where id in ( ${removed} )
+</delete>
+
+
 </mapper>
