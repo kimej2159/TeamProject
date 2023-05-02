@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>공지글 목록</title>
+<style>
+.centerr{
+text-align: center;
+}
+.btn {
+	color: #ffffff;
+}
+</style>
 </head>
 <body>
 <!-- Page Header-->
@@ -19,11 +27,11 @@
             <div class="col-md-10 ">
                 
                 
-    <div id='list-top' class='w-px1200'>
+    <div id='list-top'>
 		<ul>
-			<!-- 로그인이 된 경우에만 새 글 쓰기 가능 -->
-			<c:if test="${not empty loginInfo}">
-			<li><a class="btn btn-primary" href="" role="button">새글쓰기</a></li>
+			<!--관리자로 로그인이 된 경우에만 새 글 쓰기 가능 -->
+			<c:if test="${loginInfo.admin eq 'Y'}">
+				<a class="btn btn-primary" href="regist.no" role="button">새글쓰기</a>
 			</c:if>
 		</ul>
 	</div>
@@ -35,16 +43,16 @@
 		<col width='100px'>
 		<col width='100px'>
 	</colgroup>
-	<tr><th>번호</th>
-		<th>제목</th>
-		<th>작성자</th>
-		<th>작성일</th>
+	<tr><th class='centerr'>번호</th>
+		<th class='centerr'>제목</th>
+		<th class='centerr'>작성자</th>
+		<th class='centerr'>작성일</th>
 	</tr>
-	<c:forEach items='${page.list}' var='vo'>
-	<tr><td>${vo.no}</td>
+	<c:forEach items='${list}' var='vo'>
+	<tr><td class='centerr'>${vo.id}</td>
 		<td>${vo.title}</td>
-		<td>${vo.name}</td>
-		<td>${vo.writedate}</td>
+		<td class='centerr'>${vo.writer}</td>
+		<td class='centerr'>${vo.writedate}</td>
 	</tr>
 	</c:forEach>
 	</table>
