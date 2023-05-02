@@ -62,7 +62,6 @@ textarea{
 				</td>
 			</tr>
 			</table>
-			<input type='hidden' name='writer' value='${loginInfo.id}'>
           </form>
 		<div class="d-grid gap-2 d-md-block">
 	  		<a class="btn btn-primary arrow-middle btn-save" >저장</a>
