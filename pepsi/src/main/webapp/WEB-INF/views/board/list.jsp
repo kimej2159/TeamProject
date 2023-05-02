@@ -11,7 +11,7 @@
 #list-top ul {	padding: 0 0;}
 .txt-left {	text-align: left;}
 .border, .border div {	box-sizing: border-box}
-.col-xl-3 {	width: 23.2% !important;}
+.col-xl-3 {	width: 18.2% !important;}
 .page-list{display:flex;justify-content: center;line-height: 36px;}
 .page-list a, .page-list span {	width: 38px;
 								height: 38px;
@@ -28,7 +28,7 @@
 <body>
 <!-- Page Header-->
 <jsp:include page="/WEB-INF/views/board/board_header.jsp">
-	<jsp:param value="방명록 목록" name="subtitle" />
+	<jsp:param value="헬스커뮤니티" name="subtitle" />
 </jsp:include>
 <!-- Post Content-->
 <article class="mb-4">
@@ -104,18 +104,20 @@
 	</c:if>
 
 	<c:if test='${page.viewType eq "list" }'>
-		<table class='table table-hover'>
+		<table class='table table-hover text-center'>
 			<colgroup>
 				<col width='100px'>
 				<col>
 				<col width='140px'>
 				<col width='140px'>
+				<col width='100px'>
 			</colgroup>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
 			<c:forEach items='${page.list}' var='vo'>
 				<tr>
@@ -127,6 +129,7 @@
 					</td>
 					<td>${vo.name}</td>
 					<td>${vo.writedate}</td>
+					<td>${vo.readcnt}</td>
 				</tr>
 			</c:forEach>
 		</table>

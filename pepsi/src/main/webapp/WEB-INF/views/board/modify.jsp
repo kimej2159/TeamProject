@@ -24,7 +24,7 @@ input[type=file].attach-file {display: none;}
             <div class="col-md-10">
                         
 	
-	<h1 class='h1title'>새글쓰기</h1>
+	<h1 class='h1title'>내글수정</h1>
 	<form method='post' action="insert.bo" enctype='multipart/form-data'>
 	<input type='hidden' name='writer' value='${loginInfo.id}'>
 		<table class='table'>

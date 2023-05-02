@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,12 +109,64 @@ public class BoardController {
 		
 		
 		
+	// 방명록 첨부파일 다운로드 요청
+	@RequestMapping("/download.bo")
+	public void download(int file, HttpServletRequest req, HttpServletResponse res) {
+	
+		// 해당 첨부파일 정보를 DB에서 조회해와임마
+		BoardFileVO vo = service.board_file_info(file);
 		
+		// 클라이언트쪽에 다운로드 처리한다
+		// 화면연결필요없어
+		common.fileDownload(vo.getFilename(), vo.getFilepath(), req, res);
+	}	
 		
 		
 	
-	
+	// 방명록 글 삭제처리 요청
+		@RequestMapping("/delete.bo")
+		public String delete(int id, BoardPageVO page, Model model, HttpServletRequest request) {
+			// 첨부파일 정보를 조회해둔다
+			List<BoardFileVO> files = service.board_info(id).getFileInfo();
+			
+			
+			// 선택한 글을 DB에서 삭제한다
+			if ( service.board_delete(id) == 1 ) {
+				// 첨부되어진 파일을 물리적으로 저장된 영역에서 삭제한다
+				for( BoardFileVO vo : files ) {
+					common.file_delete(vo.getFilepath(), request );
+				}
+			};
+			
+			// 응답화면연결 - 목록화면연결
+			// redirect 화면에서 출력 할 정보를 Model 에 담는다
+			model.addAttribute("url", "list.bo");
+			model.addAttribute("id", id);
+			model.addAttribute("page", page);
+			
+			return "board/redirect";
+			
+		}
 		 
+		
+		
+	// 방명록 글 수정화면 요청
+	@RequestMapping("/modify.bo")
+	public String modify(Model model, int id, BoardPageVO page) {
+		
+		// 선택한 글 정보를 DB에서 조해해왕
+		BoardVO vo = service.board_info(id);
+		
+		// 화면에 출력 할 수 있도록 Model 에 담아
+		model.addAttribute("vo", vo);
+		model.addAttribute("page", page);
+				
+		return "board/modify";
+	}
+	
+	
+	
+	
 		 
 		 
 		 

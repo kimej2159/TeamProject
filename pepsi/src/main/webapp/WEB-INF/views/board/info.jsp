@@ -12,20 +12,23 @@
 table td { text-align: left; }
 .align{display: flex; align-items: center;}
 .align * { margin-right: 5px;}
+.btnSet{ 	margin: 20px auto; }
+#preview img, .preview img {max-height: 30px;}
+.btn {	color: #ffffff;}
 </style>
 </head>
 <body>
 
 <!-- Page Header-->
 <jsp:include page="/WEB-INF/views/board/board_header.jsp">
-	<jsp:param value="방명록 목록" name="subtitle" />
+	<jsp:param value="헬스커뮤니티" name="subtitle" />
 </jsp:include>
-	<h1 class='h1title'> 새글쓰기</h1>
+	<h1 class='h1title'>선택한 글</h1>
 	
 	
 <article>
-	
-	<table class='w-px1200'>
+	<div class="container px-4 px-lg-5">
+	<table class='table'>
 	<colgroup>
 		<col width='140px'>
 		<col>
@@ -53,7 +56,7 @@ table td { text-align: left; }
 	<div class='align'>
 		<span>${f.filename}
 		<%-- <a href='download.bo?id=${f.id}'><i class="font-img-b fa-solid fa-file-arrow-down"></i></a> --%>
-		<a class='download' data-file='${f.id}'><i class="font-img-b fa-solid fa-file-arrow-down"></i></a>
+		<a class='download' data-file='${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
 		</span>
 		<span class='preview'></span>
 	</div>
@@ -62,17 +65,27 @@ table td { text-align: left; }
 </tr>
 </table>
 
-<div class='btnSet'>
-<a class='btn-fill' id='list'>목록으로</a>
+<div class='btnSet text-center'>
+<a class='btn btn-primary' id='list'>목록으로</a>
 <c:if test="${vo.writer eq loginInfo.id}">
-<a class='btn-fill' id='modify'>정보수정</a>
-<a class='btn-fill' id='delete'>정보삭제</a>
+<a class='btn btn-primary' id='modify'>정보수정</a>
+<a class='btn btn-primary' id='delete'>정보삭제</a>
 </c:if>
 </div>
 
-
+</div>
 </article>
 
+<form method='post' action='download.bo'>
+<input type='hidden' name='file'>
+<input type='hidden' name='id' value='${vo.id}'>
+<input type='hidden' name='curPage' value='${page.curPage}'>
+<input type='hidden' name='search' value='${page.search}'>
+<input type='hidden' name='keyword' value='${page.keyword}'>
+<input type='hidden' name='pageList' value='${page.pageList}'>
+<input type='hidden' name='viewType' value='${page.viewType}'>
+
+</form>
 
 
 <script>
@@ -127,7 +140,7 @@ $('#regist').click(function(){
 	}
 });
 
-comment_list();
+//comment_list();
 
 // 댓글목록조회
 function comment_list(){
