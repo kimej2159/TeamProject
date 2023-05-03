@@ -35,17 +35,17 @@ table td { text-align: left; }
 		<col width='140px'>
 		<col width='140px'>
 		<col width='100px'>
-		<col width='100px'>
+		<col width='40px'>
 	</colgroup>
 <tr><th>제목</th>
 	<td colspan='5'>${vo.title}</td>
 </tr>
 <tr><th>작성자</th>
 	<td>${vo.name}</td>
-	<th>작성일자</th>
-	<td>${vo.writedate}</td>
-	<th>조회수</th>
-	<td>${vo.readcnt}</td>
+	<th class="text-end">작성일자</th>
+	<td class="text-end">${vo.writedate}</td>
+	<th class="text-end">조회수</th>
+	<td class="text-end">${vo.readcnt}</td>
 </tr>
 <tr><th>내용</th>
 	<td colspan='5'>${fn: replace(vo.content, crlf, '<br>')}</td>
