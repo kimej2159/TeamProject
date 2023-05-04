@@ -9,25 +9,11 @@
 
 
 
-.gym-detail img {
-	 border-radius: 5px 0px 0px 5px;
-    width: 60%;
-    float: left;
-    display: inline-block;
-}
-
-.gym-detail-content {
-    width: 40%;
-    float: right;
-}
-
-
-
 .gym-detail {
-    width: 1180px;
+    width: 1200px;
+    height : 1200px;
     flex-direction: row;
     display: flex;
-    border : 2px solid lightgray;
     border-radius: 5px;
     margin: 0 auto;
     
@@ -35,9 +21,8 @@
 
 .gym-detail-all {
 	width: 1200px;
-	height : 1200px;
+	height : 100%;
 	background-color: #ffffff;
-    border-radius: 5px;
     overflow: hidden;
     text-align: center;
     vertical-align :middle;
@@ -48,6 +33,12 @@
 
 .gym-detail-content {
 	text-align: left;
+	border : 2px solid lightgray;
+	height: 870px;
+	border-radius : 10px;
+	width: 500px;
+	margin-left: 2%;
+	padding: 2px;
 }
 
 
@@ -69,14 +60,84 @@ main h1 , h2, h3, h4 , h5, h6 , p ,tr , th , td{
     width: 100%;
   }
   th, td {
+  	
     text-align: left;
     padding: 8px;
+    padding-left : 16px;
     border-bottom: 1px solid #ddd;
+    
   }
-  th {
-    background-color: #f2f2f2;
+td {
+  	height :50px;
+  	width : 450px;
+  	border-left: 1px solid #ddd;
   }
+th {
+	height : 50px;
+  	width: 150px;
+    background-color: #fff;
+ }
+
 
 .row {
 	text-align: center; 	
 }
+
+
+
+#map {
+    width: 380px;
+    height: 380px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.gym-detail-image {
+    border: 2px solid lightgray;
+    border-radius : 10px;
+    height: 480px;
+    width: 60%;
+    padding: 2px;
+}
+
+.gym-detail-image-main {
+	width: 100%;
+}
+
+.gym-detail-image-sub {
+	width: 100%;
+	height: 20%;
+}
+
+
+
+.main-image {
+	height: 370px;
+	width: 98%;
+	border-radius: 5px;
+	margin: 8px auto;
+}
+
+
+.sub-image {
+  height: 90%;
+  width: 20%;
+  border-radius: 5px;
+  margin: auto 4px;
+  opacity: 1;
+}
+
+.sub-image:hover {
+  opacity: 0.5;
+}
+
+
+
+.location-td { 
+	display:flex;
+	padding : 0;
+	width:  380px;
+	height: 380px;
+}
+
+

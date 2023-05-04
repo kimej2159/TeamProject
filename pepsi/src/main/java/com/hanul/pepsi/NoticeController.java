@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,34 @@ public class NoticeController {
 	@Autowired private MemberServiceImpl member;
 	@Autowired private CommonUtility common;
 	
-	//
+	//첨부파일 다운로드 처리
+	@RequestMapping("/download.no")
+	public void download(int id, HttpServletRequest request, HttpServletResponse response) {
+		//선택한 공지글의 첨부파일을 서버에서 클라이언트에 다운로드한다
+		NoticeVO vo = service.notice_info(id);
+		common.fileDownload( vo.getFilename(), vo.getFilepath(), request, response);
+		
+	}
+	
+	
+	
+	//선택한 공지글 정보 화면 요청
+	@RequestMapping("/info.no")
+	public String info(int id, Model model) {
+		//조회수 증가 처리
+		service.notice_read(id);
+		
+		model.addAttribute("crlf", "\r\n");
+		model.addAttribute("lf", "\r");
+		
+		
+		//선택한 공지글 정보를  DB에서 조회
+		NoticeVO vo = service.notice_info(id);
+		
+		//화면에 출력할 수 있도록 Model에 담는다
+		model.addAttribute("vo", vo);
+		return "notice/info";
+	}
 	
 	//신규 공지글 등록 저장 요청
 	@RequestMapping("/insert.no")
@@ -33,7 +61,7 @@ public class NoticeController {
 		//첨부된 파일을 물리적으로 어디에 어떤 이름으로 저장했는지 DB에 저장
 		if( ! file.isEmpty() ) {
 			vo.setFilename( file.getOriginalFilename() );
-			common.fileUpload(file, "notice", request);
+			vo.setFilepath(common.fileUpload(file, "notice", request) );
 		}
 		//화면에서 입력한 정보를 DB에 신규 저장
 		service.notice_insert(vo);
@@ -53,6 +81,7 @@ public class NoticeController {
 	//공지글 목록 화면 요청 
 	@RequestMapping("/list.no")
 	public String list(Model model, HttpSession session) {
+		
 		//임의로 관리자로 로그인 해 둔다--------------------------------
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", "admin1");
