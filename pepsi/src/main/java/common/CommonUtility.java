@@ -52,7 +52,7 @@ public class CommonUtility {
 		msg.append("<body>");
 		msg.append("<h3><a target='_blank' http://112.164.58.220:8850'>한울핏 홈페이지</a></h3>");
 		msg.append("<div>한울핏과 함께 건강한 운동을!</div>");
-		msg.append("<p>눈누난나</p>");
+		msg.append("<p>한울핏에 가입해주셔서 감사합니다</p>");
 		msg.append("</body>");
 		msg.append("</html>");
 		email.setHtmlMsg(msg.toString());

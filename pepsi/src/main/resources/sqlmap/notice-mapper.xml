@@ -3,12 +3,36 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="no">
+<!-- 선택한 공지글 변경 저장 -->
+<update id="update">
+update notice set title = #{title}, content = #{content}
+		, filename = #{filename, jdbcType=VARCHAR}
+		, filepath = #{filepath, jdbcType=VARCHAR}
+where id = #{id}
+</update>
 
+<!-- 공지사항 삭제 -->
+<delete id='delete'>
+delete from notice where id = #{id}
+</delete>
+
+
+<!-- 조회수 변경 처리 -->
+<update id='read'>
+update notice set readcnt = readcnt+1 where id = #{id}
+</update>
+
+<!-- 선택한 공지글 조회 -->
+<select id="info" resultType='notice.NoticeVO'>
+select n.*, name
+from notice n inner join member m on n.writer = m.id
+where n.id = #{id}
+</select>
 
 <!-- 신규 공지글 저장 -->
 <insert id='insert'>
-insert into notice(title, content, writer)
-values(#{title}, #{content}, #{writer})
+insert into notice(title, content, writer, filename, filepath)
+values(#{title}, #{content}, #{writer}, #{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR})
 </insert>
 
 <!-- 공지글 목록 조회 -->

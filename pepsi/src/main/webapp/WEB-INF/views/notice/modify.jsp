@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지글 새글 쓰기 화면</title>
+<title>공지글 수정 화면</title>
 <style>
 .txt-left{
 	text-align: left;
@@ -37,9 +37,9 @@ input[type=file].attach-file {display: none;}
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10">
-			<h1 class='h1title'>공지사항 새글쓰기</h1>
+<!-- 			<h1 class='h1title'>공지사항 새글쓰기</h1> -->
             
-          <form method='post' action='insert.no' enctype='multipart/form-data'>
+          <form method='post' action='update.no' enctype='multipart/form-data'>
 			<input type='hidden' name='writer' value='${loginInfo.id}'>
 			<table class='table'>
 			<colgroup>
@@ -47,10 +47,10 @@ input[type=file].attach-file {display: none;}
 				<col>
 			</colgroup>
 			<tr><th class="text-center">제목</th>
-				<td><input type='text' name='title' title='제목' class='form-control chk'></td>
+				<td><input type='text' value='${vo.title}' name='title' title='제목' class='form-control chk'></td>
 			</tr>
 			<tr><th class="text-center">내용</th>
-				<td><textarea name="content" title="내용" class='form-control chk' style="height: 500px"></textarea></td>
+				<td><textarea name="content" title="내용" class='form-control chk' style="height: 500px">${vo.content}</textarea></td>
 			</tr>
 			<tr><th class="text-center">첨부파일</th>
 				<td class='align'>
@@ -59,23 +59,31 @@ input[type=file].attach-file {display: none;}
 						<input type='file' name='file' class='attach-file'>
 						<a><i class="fa-solid fa-file-circle-plus"></i></a>
 					</label>
-					<span class='file-name'></span>
+					<span class='file-name'>${vo.filename}</span>
 					<span class='preview'></span>
-					<a class='delete-file'><i class="fa-regular fa-trash-can"></i></a>
+					<a class='delete-file' 
+					style='display:${empty vo.filename ? "none" : "inline" }'><i class="fa-regular fa-trash-can"></i></a>
 					</div>
 				</td>
 			</tr>
 			</table>
+			<input type='hidden' name='id' value='${vo.id}'>
           </form>
 		<div class="d-grid gap-2 d-md-block">
 	  		<a class="btn btn-primary arrow-middle btn-save" >저장</a>
-	  		<a class="btn btn-secondary arrow-middle"  href='list.no'>취소</a>
+	  		<a class="btn btn-secondary arrow-middle"  href='javascript:history.go(-1)'>취소</a>
+<%-- 	  		<a class="btn btn-secondary arrow-middle"  href='info.no?id=${vo.id}'>취소</a> --%>
 		</div>
 			</div>
 		</div>
 	</div>
 </article>
 <script>
+//첨부된 파일이 이미지인 경우만 미리 보기 태그에 img 태그 넣기
+if( isImage( '${vo.filename}') ) $('#preview').html( "<img src='${vo.filepath}'>" );
+
+
+
 $('.btn-save').click(function(){
 	if( emptyCheck() ){
 		$('form').submit();

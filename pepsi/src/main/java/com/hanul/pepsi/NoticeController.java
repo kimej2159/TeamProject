@@ -1,9 +1,11 @@
 package com.hanul.pepsi;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,79 @@ public class NoticeController {
 	@Autowired private MemberServiceImpl member;
 	@Autowired private CommonUtility common;
 	
-	//
+	//공지글 수정 저장 요청
+	@RequestMapping("/update.no")
+	public String update(int id, NoticeVO vo, MultipartFile file) {
+		//화면에서 변경입력한 정보로 DB에 변경저장한다
+		service.notice_update(vo);
+		//공지글 안내 화면으로 응답화면 연결
+		return "redirect:info.no?=" + vo.getId();
+	}
+	
+	//공지글 수정 화면 요청
+	@RequestMapping("/modify.no")
+	public String modify(int id, Model model) {
+		//선택한 공지글 정보를 DB에서 조회해온다
+		NoticeVO vo =service.notice_info(id);
+		//화면에 출력할 수 있도록 Model에 담는다
+		model.addAttribute("vo", vo);
+		return "notice/modify";
+	}
+	
+	
+	//선택한 공지글 삭제처리 요청
+	@RequestMapping("/delete.no")
+	public String delete(int id, HttpServletRequest request) {
+		//첨부파일이 포함되어있는 글은 물리적인 파일글도 삭제
+		NoticeVO vo = service.notice_info(id);
+		
+		//선택한 공지글 정보를 DB에서 삭제한다
+		if(service.notice_delete(id) == 1 ) {
+			file_delete(vo.getFilepath(), request);
+		}
+		//목록 화면으로 연결
+		return "redirect:list.no";
+	}
+	
+	// 파일 삭제 메소드 선언
+	private void file_delete(String filepath, HttpServletRequest request) {
+		filepath = filepath.replace(common.appURL(request), "d://app/" + request.getContextPath());
+		File file = new File( filepath );
+		if( file.exists() ) file.delete();
+	}
+	
+	
+	
+	
+	//첨부파일 다운로드 처리
+	@RequestMapping("/download.no")
+	public void download(int id, HttpServletRequest request, HttpServletResponse response) {
+		//선택한 공지글의 첨부파일을 서버에서 클라이언트에 다운로드한다
+		NoticeVO vo = service.notice_info(id);
+		common.fileDownload( vo.getFilename(), vo.getFilepath(), request, response);
+		
+		
+	}
+	
+	
+	
+	//선택한 공지글 정보 화면 요청
+	@RequestMapping("/info.no")
+	public String info(int id, Model model) {
+		//조회수 증가 처리
+		service.notice_read(id);
+		
+		model.addAttribute("crlf", "\r\n");
+		model.addAttribute("lf", "\r");
+		
+		
+		//선택한 공지글 정보를  DB에서 조회
+		NoticeVO vo = service.notice_info(id);
+		
+		//화면에 출력할 수 있도록 Model에 담는다
+		model.addAttribute("vo", vo);
+		return "notice/info";
+	}
 	
 	//신규 공지글 등록 저장 요청
 	@RequestMapping("/insert.no")
@@ -33,7 +107,7 @@ public class NoticeController {
 		//첨부된 파일을 물리적으로 어디에 어떤 이름으로 저장했는지 DB에 저장
 		if( ! file.isEmpty() ) {
 			vo.setFilename( file.getOriginalFilename() );
-			common.fileUpload(file, "notice", request);
+			vo.setFilepath(common.fileUpload(file, "notice", request) );
 		}
 		//화면에서 입력한 정보를 DB에 신규 저장
 		service.notice_insert(vo);
@@ -53,6 +127,7 @@ public class NoticeController {
 	//공지글 목록 화면 요청 
 	@RequestMapping("/list.no")
 	public String list(Model model, HttpSession session) {
+		
 		//임의로 관리자로 로그인 해 둔다--------------------------------
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", "admin1");
