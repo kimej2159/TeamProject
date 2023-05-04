@@ -3,12 +3,14 @@ package com.hanul.pepsi;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import common.CommonUtility;
 import member.MemberServiceImpl;
@@ -22,9 +24,17 @@ public class NoticeController {
 	@Autowired private MemberServiceImpl member;
 	@Autowired private CommonUtility common;
 	
+	//
+	
 	//신규 공지글 등록 저장 요청
 	@RequestMapping("/insert.no")
-	public String insert(NoticeVO vo) {
+	public String insert(NoticeVO vo, MultipartFile file, HttpServletRequest request) {
+		//첨부파일이 있는 경우 서버의 물리적인 영역에 첨부된 파일을 저장
+		//첨부된 파일을 물리적으로 어디에 어떤 이름으로 저장했는지 DB에 저장
+		if( ! file.isEmpty() ) {
+			vo.setFilename( file.getOriginalFilename() );
+			common.fileUpload(file, "notice", request);
+		}
 		//화면에서 입력한 정보를 DB에 신규 저장
 		service.notice_insert(vo);
 		
