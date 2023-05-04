@@ -51,7 +51,7 @@ text-align: center;
 	<c:forEach items='${list}' var='vo'>
 	<tr><td class='centerr'>${vo.id}</td>
 		<td><a href='info.no?id=${vo.id}'>${vo.title}</a></td>
-		<td class='centerr'>${vo.writer}</td>
+		<td class='centerr'>${vo.name}</td>
 		<td class='centerr'>${vo.writedate}</td>
 	</tr>
 	</c:forEach>

@@ -1,5 +1,6 @@
 package com.hanul.pepsi;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,12 +26,57 @@ public class NoticeController {
 	@Autowired private MemberServiceImpl member;
 	@Autowired private CommonUtility common;
 	
+	//공지글 수정 저장 요청
+	@RequestMapping("/update.no")
+	public String update(int id, NoticeVO vo, MultipartFile file) {
+		//화면에서 변경입력한 정보로 DB에 변경저장한다
+		service.notice_update(vo);
+		//공지글 안내 화면으로 응답화면 연결
+		return "redirect:info.no?=" + vo.getId();
+	}
+	
+	//공지글 수정 화면 요청
+	@RequestMapping("/modify.no")
+	public String modify(int id, Model model) {
+		//선택한 공지글 정보를 DB에서 조회해온다
+		NoticeVO vo =service.notice_info(id);
+		//화면에 출력할 수 있도록 Model에 담는다
+		model.addAttribute("vo", vo);
+		return "notice/modify";
+	}
+	
+	
+	//선택한 공지글 삭제처리 요청
+	@RequestMapping("/delete.no")
+	public String delete(int id, HttpServletRequest request) {
+		//첨부파일이 포함되어있는 글은 물리적인 파일글도 삭제
+		NoticeVO vo = service.notice_info(id);
+		
+		//선택한 공지글 정보를 DB에서 삭제한다
+		if(service.notice_delete(id) == 1 ) {
+			file_delete(vo.getFilepath(), request);
+		}
+		//목록 화면으로 연결
+		return "redirect:list.no";
+	}
+	
+	// 파일 삭제 메소드 선언
+	private void file_delete(String filepath, HttpServletRequest request) {
+		filepath = filepath.replace(common.appURL(request), "d://app/" + request.getContextPath());
+		File file = new File( filepath );
+		if( file.exists() ) file.delete();
+	}
+	
+	
+	
+	
 	//첨부파일 다운로드 처리
 	@RequestMapping("/download.no")
 	public void download(int id, HttpServletRequest request, HttpServletResponse response) {
 		//선택한 공지글의 첨부파일을 서버에서 클라이언트에 다운로드한다
 		NoticeVO vo = service.notice_info(id);
 		common.fileDownload( vo.getFilename(), vo.getFilepath(), request, response);
+		
 		
 	}
 	

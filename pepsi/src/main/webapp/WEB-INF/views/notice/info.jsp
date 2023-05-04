@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>공지사항 글 확인</title>
 <style>
+.gray{
+	color: gray; font-size: 15px;
+}
 .h1title{font-size: 26px;}
 table td { text-align: left; }
 .align{display: flex; align-items: center;}
@@ -23,7 +26,7 @@ table td { text-align: left; }
  <jsp:include page="/WEB-INF/views/notice/notice_header.jsp">
 	<jsp:param value="공지사항" name="subtitle"/>
 </jsp:include>
-			<h1 class='h1title'>공지사항 새글쓰기</h1>
+<!-- 			<h1 class='h1title'>공지사항 새글쓰기</h1> -->
 			
 <!-- Post Content-->
 <article>
@@ -51,15 +54,22 @@ table td { text-align: left; }
 	<td colspan='5'>${fn:replace( vo.content, crlf, '<br>')}</td>
 </tr>
 <tr><th>첨부파일</th>
-	<td colspan='5'>${vo.filename}</td>
+	<td colspan='5'>${vo.filename}
+	<c:if test='${ not empty vo.filename}'>
+	<a href='download.no?id=${vo.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
+	</c:if>
+	<c:if test='${ empty vo.filename}'>
+	<span class='gray'>첨부파일이 없습니다.</span>
+	</c:if>
+	</td>
 </tr>
 </table>
 
 <div class='btnSet text-center'>
 <a class='btn btn-primary' href='list.no'>목록으로</a>
 <c:if test="${vo.writer eq loginInfo.id}">
-<a class='btn btn-primary' id='modify'>정보수정</a>
-<a class='btn btn-primary' id='delete'>정보삭제</a>
+<a class='btn btn-primary' id='modify' href='modify.no?id=${vo.id}'>정보수정</a>
+<a class='btn btn-primary' id='delete' href='delete.no?id=${vo.id}'>정보삭제</a>
 </c:if>
 </div>
 

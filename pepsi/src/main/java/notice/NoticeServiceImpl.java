@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int notice_update(NoticeVO vo) {
-		return 0;
+		return dao.notice_update(vo);
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public int notice_delete(int id) {
-		return 0;
+		return dao.notice_delete(id);
 	}
 
 	
