@@ -28,11 +28,36 @@ public class NoticeController {
 	
 	//공지글 수정 저장 요청
 	@RequestMapping("/update.no")
-	public String update(int id, NoticeVO vo, MultipartFile file) {
+	public String update(NoticeVO vo, MultipartFile file, HttpServletRequest request) {
+		NoticeVO notice = service.notice_info( vo.getId() );
+		
+		//파일을 첨부하지 않는 경우
+		if( file.isEmpty() ) {
+			if ( vo.getFilename().isEmpty() ) {
+				//원래 첨부파일 X --> 첨부X-->됨
+				//원래 첨부파일 O --> 첨부X	-->안됨
+				common.file_delete(notice.getFilepath(), request);
+				
+			}else {
+				//원래 첨부파일 O --> 그대로 사용: 원래 정보로 담아둔다-->안됨
+				vo.setFilename( notice.getFilename() );
+				vo.setFilepath( notice.getFilepath() );
+				
+			}
+		}else {
+		//파일 첨부하는 경우
+		//원래 첨부파일 X --> 첨부-->돼
+			vo.setFilename( file.getOriginalFilename() );
+			vo.setFilepath( common.fileUpload(file, "notice", request) );
+			
+		//원래 첨부파일 O --> 바꿔 첨부-->돼
+			common.file_delete(notice.getFilepath(), request);
+		}
+
 		//화면에서 변경입력한 정보로 DB에 변경저장한다
 		service.notice_update(vo);
 		//공지글 안내 화면으로 응답화면 연결
-		return "redirect:info.no?=" + vo.getId();
+		return "redirect:info.no?id=" + vo.getId();
 	}
 	
 	//공지글 수정 화면 요청
@@ -54,18 +79,13 @@ public class NoticeController {
 		
 		//선택한 공지글 정보를 DB에서 삭제한다
 		if(service.notice_delete(id) == 1 ) {
-			file_delete(vo.getFilepath(), request);
+			common.file_delete(vo.getFilepath(), request);
 		}
 		//목록 화면으로 연결
 		return "redirect:list.no";
 	}
 	
-	// 파일 삭제 메소드 선언
-	private void file_delete(String filepath, HttpServletRequest request) {
-		filepath = filepath.replace(common.appURL(request), "d://app/" + request.getContextPath());
-		File file = new File( filepath );
-		if( file.exists() ) file.delete();
-	}
+
 	
 	
 	
