@@ -68,6 +68,8 @@ input[type=file].attach-file {display: none;}
 			</tr>
 			</table>
 			<input type='hidden' name='id' value='${vo.id}'>
+			<input type='hidden' name='filename'>
+			
           </form>
 		<div class="d-grid gap-2 d-md-block">
 	  		<a class="btn btn-primary arrow-middle btn-save" >저장</a>
@@ -85,6 +87,7 @@ if( isImage( '${vo.filename}') ) $('#preview').html( "<img src='${vo.filepath}'>
 
 
 $('.btn-save').click(function(){
+	$('[name=filename]').val( $('#file-name').text() );
 	if( emptyCheck() ){
 		$('form').submit();
 	}

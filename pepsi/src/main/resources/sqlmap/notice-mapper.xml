@@ -5,7 +5,8 @@
 <mapper namespace="no">
 <!-- 선택한 공지글 변경 저장 -->
 <update id="update">
-update notice set title = #{title}, content = #{content}
+update notice 
+set title = #{title}, content = #{content}
 		, filename = #{filename, jdbcType=VARCHAR}
 		, filepath = #{filepath, jdbcType=VARCHAR}
 where id = #{id}
