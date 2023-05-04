@@ -50,7 +50,7 @@ text-align: center;
 	</tr>
 	<c:forEach items='${list}' var='vo'>
 	<tr><td class='centerr'>${vo.id}</td>
-		<td>${vo.title}</td>
+		<td><a href='info.no?id=${vo.id}'>${vo.title}</a></td>
 		<td class='centerr'>${vo.writer}</td>
 		<td class='centerr'>${vo.writedate}</td>
 	</tr>

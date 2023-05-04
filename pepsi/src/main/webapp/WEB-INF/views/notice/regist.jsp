@@ -23,6 +23,7 @@ textarea{
 .btn{ color: #ffffff;}
 .h1title{font-size: 26px;}
 #preview img, .preview img {max-height: 30px;}
+input[type=file].attach-file {display: none;}
 </style>
 
 </head>

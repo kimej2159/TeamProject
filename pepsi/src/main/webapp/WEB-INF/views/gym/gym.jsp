@@ -52,7 +52,7 @@
 			<form action="gym-detail.ch" method="post">
 			<div class="card" >
 				<img
-					src="<%=request.getContextPath()%>/images/<%=gym.getGym_picture()%>"
+					src="<%=request.getContextPath()%>/images/<%=gym.getGym_picture().split(",")[0]%>"
 					alt="image">
 				<div class="card-text">
 					<h2><%=gym.getGym_name()%></h2>
