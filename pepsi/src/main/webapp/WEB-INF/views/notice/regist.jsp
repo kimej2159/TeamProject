@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>공지글 새글 쓰기 화면</title>
 <style>
+.txt-left{
+	text-align: left;
+}
 .centerr{
 text-align: center;
 }
