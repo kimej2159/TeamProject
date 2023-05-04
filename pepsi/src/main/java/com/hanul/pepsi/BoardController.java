@@ -165,6 +165,44 @@ public class BoardController {
 	}
 	
 	
+
+	
+	// 방명록 글 수정 저장처리 요청
+	@RequestMapping("/update.bo")
+	public String update(int id, BoardPageVO page, Model model, BoardVO vo, String removed, MultipartFile[] file, HttpServletRequest request) {
+		
+		// 첨부되어진 파일이 있다면 해당 파일 정보를 저장한다
+		List<BoardFileVO> files = attached_file(file, request); // 파일목록
+		vo.setFileInfo(files);
+		// 화면에서 변경 입력한 정보로 DB에 변경저장한다
+		service.board_update(vo);
+		
+		// 삭제하려는 대상 파일 정보 조회
+		if ( ! removed.isEmpty() ) {
+			
+			List<BoardFileVO> remove_file = service.board_removed_file(removed);
+			
+			// DB에서 삭제 + 물리적인 파일 삭제
+			if ( service.board_file_delete(removed) > 0 ) {
+				for( BoardFileVO f : remove_file ) {
+					common.file_delete(f.getFilepath(), request);
+				}
+			};
+			
+		}
+		// 화면연결 - 정보화면
+		model.addAttribute("url", "info.bo");
+		model.addAttribute("page", page);
+		model.addAttribute("id", id);
+		
+		return "board/redirect";
+		
+	}
+	
+
+	
+	
+	
 	
 	
 		 
