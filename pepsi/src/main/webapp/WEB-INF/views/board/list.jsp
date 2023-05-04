@@ -19,6 +19,7 @@
 								border: 1px solid transparent;
 }
 .page-list a:hover {cursor: pointer;}
+.h-title {cursor: pointer;}
 .page-list span {
 	border: 1px solid #3367d6;
 	color: #3367d6;
@@ -122,7 +123,7 @@
 			<c:forEach items='${page.list}' var='vo'>
 				<tr>
 					<td>${vo.no}</td>
-					<td class='txt-left'><a onclick="fn_info( ${vo.id} )">${vo.title}</a>
+					<td class='txt-left'><a class='h-title' onclick="fn_info( ${vo.id} )">${vo.title}</a>
 						<c:if test='${vo.filecnt > 0}'>
 							<span><i class="text-danger fa-solid fa-paperclip"></i></span>
 						</c:if> <%-- <span>${vo.filecnt eq 0 ? '' : '<i class="font-img-b fa-solid fa-paperclip"></i>' }</span> --%>

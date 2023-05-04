@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,21 +26,31 @@ input[type=file].attach-file {display: none;}
                         
 	
 	<h1 class='h1title'>내글수정</h1>
-	<form method='post' action="insert.bo" enctype='multipart/form-data'>
-	<input type='hidden' name='writer' value='${loginInfo.id}'>
+	<form method='post' action="info.bo" enctype='multipart/form-data'>
 		<table class='table'>
 		<colgroup>
 			<col width='120px'>
 			<col>
 		</colgroup>
 		<tr><th class="text-center">제목</th>
-			<td><input type='text' name='title' title='제목' class='form-control chk'></td>
+			<td><input type='text' value='${vo.title}' name='title' title='제목' class='form-control chk'></td>
 		</tr>
 		<tr><th class="text-center">내용</th>
-			<td><textarea name="content" title="내용" class='form-control chk' style="height: 500px"></textarea></td>
+			<td><textarea name="content" title="내용" class='form-control chk' style="height: 500px">${vo.content}</textarea></td>
 		</tr>
 		<tr><th class="text-center">첨부파일</th>
 			<td class='align'>
+				<c:forEach items="${vo.fileInfo}" var="f">
+				<div class='align' data-file='${f.id}'>
+				<label>
+					<input type='file' name='file' class='attach-file'>
+					<a><i class="fa-solid fa-file-circle-plus"></i></a>
+				</label>
+				<span class='file-name'>${f.filename}</span>
+				<span class='preview'></span>
+				<a class='delete-file' style='display:inline' ><i class="fa-regular fa-trash-can"></i></a>
+				</div>
+				</c:forEach>
 				<div class='align'>
 				<label>
 					<input type='file' name='file' class='attach-file'>
@@ -53,12 +64,20 @@ input[type=file].attach-file {display: none;}
 		</tr>
 		
 		</table>
+		<input type='hidden' name='removed'>
+		<input type='hidden' name='id' value='${vo.id}'>
+		<input type='hidden' name='curPage' value='${page.curPage}'>
+		<input type='hidden' name='search' value='${page.search}'>
+		<input type='hidden' name='keyword' value='${page.keyword}'>
+		<input type='hidden' name='pageList' value='${page.pageList}'>
+		<input type='hidden' name='viewType' value='${page.viewType}'>
+		
 		
 	
 	</form>
 	<div class="d-grid gap-2 d-md-block text-center">
-	  <a class="btn btn-primary  btn-save" >저장</a>
-	  <a class="btn btn-secondary "  href='list.bo'>취소</a>
+	  <a class="btn btn-primary"  id="save" >저장</a>
+	  <a class="btn btn-secondary "  id="cancel" >취소</a>
 	</div>
         
                
@@ -66,13 +85,26 @@ input[type=file].attach-file {display: none;}
         </div>
     </div>
 </article>
+
+
+
+
         
 <script>
-$('.btn-save').click(function(){
-	if( emptyCheck() ){
-		$('form').submit();
-	}
+
+<c:forEach items="${vo.fileInfo}" var="f" varStatus="s">
+if ( isImage( '${f.filename}')){
+	$('.preview').eq(${s.index}).html('<img src="${f.filepath}">');}
+</c:forEach>
+
+$('#cancel').click( function(){
+	$('form').submit();
 })
+$('#save').on('click', function(){
+	if( emptyCheck() )
+		$('form').attr('action', 'update.bo').submit();
+});
+
 
 
 </script>
