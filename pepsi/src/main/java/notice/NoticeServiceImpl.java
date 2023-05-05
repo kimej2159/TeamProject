@@ -11,44 +11,40 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public int notice_insert(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.notice_insert(vo);
 	}
 
 	@Override
 	public int notice_reply_insert(NoticeVO vo) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public List<NoticeVO> notice_list() {
-		// TODO Auto-generated method stub
 		return dao.notice_list();
 	}
 
 	@Override
 	public NoticeVO notice_info(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.notice_info(id);
 	}
 
 	@Override
 	public int notice_update(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.notice_update(vo);
 	}
 
 	@Override
 	public int notice_read(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.notice_read(id);
 	}
 
 	@Override
 	public int notice_delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.notice_delete(id);
 	}
+
+	
+
 
 }

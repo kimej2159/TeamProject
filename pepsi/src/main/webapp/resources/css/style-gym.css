@@ -31,7 +31,6 @@ a:hover {
 }
 
 .card p , h2 , .price {
-	
 	vertical-align: middle;
 	margin: 0px;
 	margin-left: 30px;
@@ -62,7 +61,6 @@ a:hover {
 	font-size: 50px;
 	color: #ffc451;
 	text-align: left;
-	
 }
 
 .card-text {

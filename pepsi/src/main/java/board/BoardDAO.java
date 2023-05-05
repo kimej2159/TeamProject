@@ -36,44 +36,47 @@ public class BoardDAO implements BoardService {
 
 	@Override
 	public BoardVO board_info(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVO vo = sql.selectOne("bo.info", id);
+		vo.setFileInfo( sql.selectList("bo.fileList", id) );
+		
+		return vo;
 	}
 
 	@Override
 	public int board_read(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return sql.update("bo.read", id);
 	}
 
 	@Override
 	public int board_update(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(vo.getFileInfo()!=null) // 파일추가가 있으면 저장하기
+			sql.insert("bo.fileInsert", vo);
+		return sql.update("bo.update", vo);
 	}
 
 	@Override
 	public int board_delete(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sql.delete("bo.delete", id);
 	}
 
 	@Override
 	public BoardFileVO board_file_info(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sql.selectOne("bo.fileInfo", id);
 	}
 
 	@Override
 	public List<BoardFileVO> board_removed_file(String removed) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return sql.selectList("bo.fileRemoved", removed);
 	}
 
 	@Override
 	public int board_file_delete(String removed) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		return sql.delete("bo.fileDelete", removed);
 	}
 
 }

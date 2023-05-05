@@ -15,7 +15,7 @@ input[type=file].attach-file {display: none;}
 <body>
 <!-- Page Header-->
 <jsp:include page="/WEB-INF/views/board/board_header.jsp">
-	<jsp:param value="방명록 새 글" name="subtitle"/>
+	<jsp:param value="헬스커뮤니티" name="subtitle"/>
 </jsp:include>
 <!-- Post Content-->
 <article class="mb-4">
@@ -24,7 +24,7 @@ input[type=file].attach-file {display: none;}
             <div class="col-md-10">
                         
 	
-	<h1 class='h1title'> 새글쓰기</h1>
+	<h1 class='h1title'>새글쓰기</h1>
 	<form method='post' action="insert.bo" enctype='multipart/form-data'>
 	<input type='hidden' name='writer' value='${loginInfo.id}'>
 		<table class='table'>
@@ -56,9 +56,9 @@ input[type=file].attach-file {display: none;}
 		
 	
 	</form>
-	<div class="d-grid gap-2 d-md-block">
-	  <a class="btn btn-primary arrow-middle btn-save" >저장</a>
-	  <a class="btn btn-secondary arrow-middle"  href='list.bo'>취소</a>
+	<div class="d-grid gap-2 d-md-block text-center">
+	  <a class="btn btn-primary  btn-save" >저장</a>
+	  <a class="btn btn-secondary "  href='list.bo'>취소</a>
 	</div>
         
                

@@ -13,8 +13,7 @@ public class NoticeDAO implements NoticeService {
 	
 	@Override
 	public int notice_insert(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sql.insert("no.insert", vo);
 	}
 
 	@Override
@@ -32,25 +31,26 @@ public class NoticeDAO implements NoticeService {
 	@Override
 	public NoticeVO notice_info(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return sql.selectOne("no.info", id);
 	}
 
 	@Override
 	public int notice_update(NoticeVO vo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.update("no.update", vo);
 	}
 
 	@Override
 	public int notice_read(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sql.update("no.read", id);
 	}
 
 	@Override
 	public int notice_delete(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sql.delete("no.delete", id);
 	}
+
+	
 
 }
