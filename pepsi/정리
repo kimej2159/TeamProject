@@ -1,0 +1,53 @@
+* 라이브러리 선언
+
+		<!-- 오라클 jdbc 라이브러리 -->
+		<dependency>
+		    <groupId>com.oracle.database.jdbc</groupId>
+		    <artifactId>ojdbc8</artifactId>
+		    <version>21.5.0.0</version>
+		</dependency>
+				
+		<!-- Mybatis 라이브러리 -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>3.5.9</version>
+		</dependency>
+				
+		<!-- 스프링에 Mybatis를 연결하기 위한 라이브러리 -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>2.0.7</version>
+		</dependency>
+		
+		<!-- 스프링에서 jdbc를 사용하도록 연결하는 라이브러리 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- DBCP 라이브러리 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.9.0</version>
+		</dependency>	
+
+* 웹브라우저에서 사용자의 행위
+-> 주소가 변경됨
+-> Controller 
+-> Service
+-> DAO
+-> mapper
+			
+			
+* 응답 화면마다 header, footer 를 들어간다
+  --> 화면의 레이아웃을 지정하자.
+  
+
+
+
+  
+
