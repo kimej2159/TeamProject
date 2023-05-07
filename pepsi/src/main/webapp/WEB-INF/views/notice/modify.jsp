@@ -81,7 +81,7 @@ input[type=file].attach-file {display: none;}
 	</div>
 </article>
 <script>
-//첨부된 파일이 이미지인 경우만 미리 보기 태그에 img 태그 넣기
+//첨부된 파일이 이미지인 경우만 미리 보기 태그에 img 태그 넣기/ 수정 시 파일이 바뀌었는지 안바뀌었는지 확인할 수 있다
 if( isImage( '${vo.filename}') ) $('#preview').html( "<img src='${vo.filepath}'>" );
 
 
