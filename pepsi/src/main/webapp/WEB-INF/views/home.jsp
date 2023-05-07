@@ -28,59 +28,38 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                            <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+                        <a href="/gym.ch">
+                            <h2 class="post-title">커뮤니티를 통한 피트니스와 건강에 관한 모든 것.</h2>
                         </a>
                         <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2023
+                            각자의 목표에 맞춘 운동과 영양학, 건강한 식습관과 생활 습관 등 다양한 주제를 다루어 보며, 서로에게 도움이 되는 팁과 경험을 나누어 주세요.
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.</h2></a>
+                        <a href="/gym.ch">
+                        <h2 class="post-title">나에게 맞는 트레이너를 부담없이 고르세요!</h2></a>
                         <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 18, 2023
+                            우리 사이트를 통해 여러분은 자신에게 맞는 트레이너를 선택하고 함께 건강한 삶을 추구할 수 있습니다. 건강한 삶을 위한 첫 걸음을 함께 시작해보시겠어요?
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Science has not yet mastered prophecy</h2>
-                            <h3 class="post-subtitle">We predict too much for the next year and yet far too little for the next ten.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on August 24, 2023
-                        </p>
+                        <a href="/trainer.ch">
+							<h2 class="post-title">한울핏! 몸과 마음이 건강해지는 공간</h2>
+                            <h3 class="post-subtitle">자신에게 맞는 헬스장을 찾으세요!</h3> 
+                      	</a>
+                        
                     </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Failure is not an option</h2>
-                            <h3 class="post-subtitle">Many say exploration is part of our destiny, but it’s actually our duty to future generations.</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on July 8, 2023
-                        </p>
-                    </div>
+                    
                     <!-- Divider-->
                     <hr class="my-4" />
                     <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="/member">회원가입하기 →</a></div>
                 </div>
             </div>
         </div>

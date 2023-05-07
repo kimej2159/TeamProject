@@ -140,9 +140,9 @@ public class CommonUtility {
 		// DB 에 저장된 경로와 다르게 저장이 되어야함
 		
 		if ( filepath != null ) {
-		filepath = filepath.replace(appURL(request), "d://app/" + request.getContextPath());
-		File file = new File( filepath );
-		if ( file.exists() ) file.delete();
+			filepath = filepath.replace(appURL(request), "d://app/" + request.getContextPath());
+			File file = new File( filepath );
+			if ( file.exists() ) file.delete();
 		}
 	}
 	
