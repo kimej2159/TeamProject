@@ -12,7 +12,7 @@ public class NoticeVO {
 	private int id, readcnt, no, step, indent, root;
 	private String title, content, writer, name, filename, filepath;
 	private Date writedate;
-	/* private List<NoticeFileVO> fileInfo; */
+	private List<NoticeFileVO> fileInfo; 
 }
 
 

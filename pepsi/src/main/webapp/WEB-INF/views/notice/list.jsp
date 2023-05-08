@@ -48,8 +48,8 @@ text-align: center;
 		<th class='centerr'>작성자</th>
 		<th class='centerr'>작성일</th>
 	</tr>
-	<c:forEach items='${list}' var='vo'>
-	<tr><td class='centerr'>${vo.id}</td>
+	<c:forEach items='${page.list}' var='vo'>
+	<tr><td class='centerr'>${vo.no}</td>
 		<td><a href='info.no?id=${vo.id}'>${vo.title}</a></td>
 		<td class='centerr'>${vo.name}</td>
 		<td class='centerr'>${vo.writedate}</td>

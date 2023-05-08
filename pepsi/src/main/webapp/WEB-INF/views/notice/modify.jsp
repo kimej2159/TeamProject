@@ -53,22 +53,35 @@ input[type=file].attach-file {display: none;}
 				<td><textarea name="content" title="내용" class='form-control chk' style="height: 500px">${vo.content}</textarea></td>
 			</tr>
 			<tr><th class="text-center">첨부파일</th>
-				<td class='align'>
+				<td>
+					<c:forEach items="${vo.fileInfo}" var="f">
+					<div class='align'  data-file='${f.id}'>
+					<label>
+						<input type='file' name='file' class='attach-file'>
+						<a><i class="fa-solid fa-file-circle-plus"></i></a>
+					</label>
+					<span class='file-name'>${f.filename}</span>
+					<span class='preview'></span>
+					<a class='delete-file' 
+					style='display:${empty f.filename ? "none" : "inline" }'><i class="fa-regular fa-trash-can"></i></a>
+					</div>
+					</c:forEach>
 					<div class='align'>
 					<label>
 						<input type='file' name='file' class='attach-file'>
 						<a><i class="fa-solid fa-file-circle-plus"></i></a>
 					</label>
-					<span class='file-name'>${vo.filename}</span>
+					<span class='file-name'></span>
 					<span class='preview'></span>
-					<a class='delete-file' 
-					style='display:${empty vo.filename ? "none" : "inline" }'><i class="fa-regular fa-trash-can"></i></a>
+					<a class='delete-file'><i class="fa-regular fa-trash-can"></i></a>
 					</div>
+					
 				</td>
 			</tr>
 			</table>
 			<input type='hidden' name='id' value='${vo.id}'>
 			<input type='hidden' name='filename'>
+			<input type='hidden' name='removed'>
 			
           </form>
 		<div class="d-grid gap-2 d-md-block">
@@ -82,12 +95,17 @@ input[type=file].attach-file {display: none;}
 </article>
 <script>
 //첨부된 파일이 이미지인 경우만 미리 보기 태그에 img 태그 넣기/ 수정 시 파일이 바뀌었는지 안바뀌었는지 확인할 수 있다
-if( isImage( '${vo.filename}') ) $('#preview').html( "<img src='${vo.filepath}'>" );
+// if( isImage( '${vo.filename}') ) $('#preview').html( "<img src='${vo.filepath}'>" );
 
-
+<c:forEach items="${vo.fileInfo}" var="f" varStatus="s">
+if( isImage( '${f.filename}' ) ){
+	$('.preview').eq( ${s.index} )
+			.html( '<img src="${f.filepath}">' );
+}
+</c:forEach>
 
 $('.btn-save').click(function(){
-	$('[name=filename]').val( $('#file-name').text() );
+	$('[name=filename]').val( $('.file-name').text() );
 	if( emptyCheck() ){
 		$('form').submit();
 	}

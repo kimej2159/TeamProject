@@ -28,6 +28,16 @@ public class MemberController {
 	private String NAVER_ID = "Xggyd4Htf9Fg6z2uPEgn";
 	private String NAVER_SECRET ="5ZIZMjV2uk";
 	
+	
+	
+	
+	/*
+	 * @RequestMapping("/mypage") public String mypage(int id, Model model) {
+	 * MemberVO vo = service.member_myinfo("id");
+	 * 
+	 * //화면에 출력할 수 있도록 Model에 담는다 model.addAttribute("vo", vo); return
+	 * "member/mypage"; }
+	 */
 
 	//아이디 중복 확인 
 	@ResponseBody @RequestMapping("/id_check")

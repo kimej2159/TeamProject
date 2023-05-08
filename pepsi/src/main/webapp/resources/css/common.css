@@ -25,6 +25,7 @@
 .w-px800 { width: 800px }
 .w-px1000 { width: 1000px }
 .w-px1200 { width: 1200px }
+.delete-file { display: none; }
 
 ul { list-style: none; align-items: center; padding:0 ;}
 /* .txt-left { text-align: left; }

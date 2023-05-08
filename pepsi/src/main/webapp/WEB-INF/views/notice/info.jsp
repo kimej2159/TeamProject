@@ -54,11 +54,25 @@ table td { text-align: left; }
 	<td colspan='5'>${fn:replace( vo.content, crlf, '<br>')}</td>
 </tr>
 <tr><th>첨부파일</th>
-	<td colspan='5'>${vo.filename}
+	<td colspan='5'>
+	<!--  
+	${vo.filename}
 	<c:if test='${ not empty vo.filename}'>
 	<a href='download.no?id=${vo.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
 	</c:if>
 	<c:if test='${ empty vo.filename}'>
+	<span class='gray'>첨부파일이 없습니다.</span>
+	</c:if>
+	-->
+	
+	<c:forEach items='${vo.fileInfo}' var='f'>
+	<div class='align'>
+		<span>${f.filename}
+			<a href='download.bo?id=${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
+		</span>
+	</div>
+	</c:forEach>
+	<c:if test='${ empty vo.fileInfo}'>
 	<span class='gray'>첨부파일이 없습니다.</span>
 	</c:if>
 	</td>

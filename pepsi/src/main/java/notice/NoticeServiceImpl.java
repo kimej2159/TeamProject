@@ -44,6 +44,29 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.notice_delete(id);
 	}
 
+	public int notice_file_delete(String removed) {
+		// TODO Auto-generated method stub
+		return dao.notice_file_delete(removed);
+	}
+
+	@Override
+	public NoticeFileVO notice_file_info(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<NoticeFileVO> notice_removed_file(String removed) {
+		// TODO Auto-generated method stub
+		return dao.notice_removed_file(removed);
+	}
+
+	@Override
+	public NoticePageVO notice_list(NoticePageVO page) {
+		// TODO Auto-generated method stub
+		return dao.notice_list(page);
+	}
+
 	
 
 
