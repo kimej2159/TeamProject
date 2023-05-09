@@ -18,12 +18,13 @@
 								margin: 1px;
 								border: 1px solid transparent;
 }
-.page-list a:hover {cursor: pointer;}
+.page-list a:hover {cursor: pointer;background-color: rgb(51, 103, 214, 0.1);}
 .h-title {cursor: pointer;}
 .page-list span {
 	border: 1px solid #3367d6;
 	color: #3367d6;
 }
+.btnSet { margin: 20px auto; }
 </style>
 </head>
 <body>

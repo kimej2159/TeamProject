@@ -85,14 +85,13 @@ public class NoticeDAO implements NoticeService {
 
 	@Override
 	public NoticePageVO notice_list(NoticePageVO page) {
-		// TODO Auto-generated method stub
 		// 총 글의 건 수를 조회하면 페이지 관련 정보가 계산 된다
-		page.setTotalList( sql.selectOne("no.totalCount"));
+		page.setTotalList( sql.selectOne("no.totalCount", page));
 		
 		//해당 페이지의 글 목록 조회
-		sql.selectList("no.list", page);
+		page.setList( sql.selectList("no.list", page) );
 		
-		return null;
+		return page;
 	}
 
 	

@@ -185,7 +185,7 @@ public class NoticeController {
 	public String list(Model model, HttpSession session, NoticePageVO page) {
 		
 		//임의로 관리자로 로그인 해 둔다--------------------------------
-		HashMap<String, String> map = new HashMap<String, String>();
+/*		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("id", "admin1");
 		
 		map.put("pw", "manager");
@@ -194,7 +194,7 @@ public class NoticeController {
 		
 		MemberVO vo = member.member_login(map);
 		session.setAttribute("loginInfo", vo);
-	
+*/	
 		//--------------------------------------------------------
 		
 		//DB에서 공지글 목록을 조회해온다
@@ -207,3 +207,7 @@ public class NoticeController {
 	}
 
 }
+
+
+
+

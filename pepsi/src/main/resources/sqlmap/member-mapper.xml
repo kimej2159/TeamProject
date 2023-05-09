@@ -7,9 +7,11 @@
 <!-- 회원정보변경 -->
 <update id="update">
 update member set
+ <if test="pw != null">
  pw = #{pw, jdbcType=VARCHAR}, 
- name = #{name}, 
  salt = #{salt, jdbcType=VARCHAR},
+ </if> 
+ name = #{name},
  gender = #{gender}, 
  email = #{email, jdbcType=VARCHAR}, 
  birth = #{birth, jdbcType=VARCHAR},
@@ -18,6 +20,7 @@ update member set
  address = #{address, jdbcType=VARCHAR}, 
  social = #{social, jdbcType=VARCHAR}, 
  profile = #{profile, jdbcType=VARCHAR}
+ 
 where id = #{id}
 </update>
 

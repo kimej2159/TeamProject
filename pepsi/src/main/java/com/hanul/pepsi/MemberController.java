@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,13 +32,21 @@ public class MemberController {
 	
 	
 	
-	/*
-	 * @RequestMapping("/mypage") public String mypage(int id, Model model) {
-	 * MemberVO vo = service.member_myinfo("id");
-	 * 
-	 * //화면에 출력할 수 있도록 Model에 담는다 model.addAttribute("vo", vo); return
-	 * "member/mypage"; }
-	 */
+	@RequestMapping("/test")
+	public void mypage(MemberVO vo, HttpSession session) {
+		vo = (MemberVO)session.getAttribute("loginInfo");
+		vo.setPw(null);
+		vo.setPhone("01012345678");
+		service.member_update(vo);
+	}
+	
+	  @RequestMapping("/mypage")
+	  public String mypage() {
+	  
+	  return "/member/mypage"; 
+	  
+	  }
+	 
 
 	//아이디 중복 확인 
 	@ResponseBody @RequestMapping("/id_check")
