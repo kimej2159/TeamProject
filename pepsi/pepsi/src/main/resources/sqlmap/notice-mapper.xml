@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="no">
+<!-- 선택한 공지글 변경 저장 -->
+<update id="update">
+update notice 
+set title = #{title}, content = #{content}
+<!--  
+		, filename = #{filename, jdbcType=VARCHAR}
+		, filepath = #{filepath, jdbcType=VARCHAR}
+-->
+where id = #{id}
+</update>
+
+<!-- 공지사항 삭제 -->
+<delete id='delete'>
+delete from notice where id = #{id}
+</delete>
+
+
+<!-- 조회수 변경 처리 -->
+<update id='read'>
+update notice set readcnt = readcnt+1 where id = #{id}
+</update>
+
+<!-- 선택한 공지글 조회 -->
+<select id="info" resultType='notice.NoticeVO'>
+select n.*, name
+from notice n inner join member m on n.writer = m.id
+where n.id = #{id}
+</select>
+
+<select id='fileList' resultType='notice.NoticeFileVO'>
+select * from notice_file where notice_id = #{id}
+</select>
+
+<select id='fileRemoved' resultType='notice.NoticeFileVO'>
+select * from notice_file where id in ( ${removed} )
+</select>
+
+
+<!-- 삭제대상 파일정보삭제 -->
+<delete id="fileDelete">
+delete from notice_file where id in ( ${removed} )
+</delete>
+
+<insert id="fileInsert">
+<foreach collection="fileInfo" item="info" separator=" "
+		open="insert all" close="select * from dual">
+into notice_file(notice_id, filename, filepath)
+values( #{id}, #{info.filename}, #{info.filepath} )
+</foreach>
+</insert>
+
+
+<!-- 신규 공지글 저장 -->
+<insert id='insert'>
+insert into notice(title, content, writer)
+values(#{title}, #{content}, #{writer})
+<selectKey keyProperty="id" order="AFTER" resultType='integer'>
+select seq_notice.currval from dual
+</selectKey>
+<!--  
+insert into notice(title, content, writer, filename, filepath)
+values(#{title}, #{content}, #{writer}, #{filename, jdbcType=VARCHAR}, #{filepath, jdbcType=VARCHAR})
+-->
+</insert>
+
+<sql id='search_where'>
+<choose>
+	<when test='search=="all"'>
+	where title like '%'|| #{keyword} ||'%'
+	or 	content like '%'|| #{keyword} ||'%'
+<!-- 	or	writer like '%'|| #{keyword} ||'%' -->
+	</when>
+	<when test='search=="title" or search=="content"'>
+	where ${search} like '%'|| #{keyword} ||'%'
+	</when>
+</choose>
+</sql>
+
+<!-- 공지글의 건 수 조회 -->
+<select id='totalCount' resultType='integer'>
+select count(*) from notice
+<include refid="search_where"/>
+</select>
+
+
+<!-- 공지글 목록 조회 -->
+<select id='list' resultType='notice.NoticeVO'>
+select * from
+(select row_number() over(order by n.id) no, n.*, name
+from notice n left outer join member m on n.writer = m.id
+<include refid="search_where"/>) n 
+where no between #{beginList} and #{endList}
+order by no desc
+</select>
+</mapper>
+
+
+
+

@@ -79,7 +79,7 @@ select salt from member where id = #{id}
 
 <!-- 로그인처리 -->
 <select id='login' resultType='member.MemberVO'>
-select * from member
+select to_char(birth, 'yyyy-mm-dd') birth, m.* from member m 
 where id = #{id} and pw = #{pw}
 </select>
 </mapper>

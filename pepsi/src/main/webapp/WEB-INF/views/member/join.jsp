@@ -76,11 +76,11 @@ span { color:#ff0000; margin-right: 5px; }
 		<div  class="mb-3">
 			<label>성별</label>
 			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" checked >
+			  <input class="form-check-input" type="radio" value="남" name="gender" id="flexRadioDefault1" checked >
 			  <label class="form-check-label" for="flexRadioDefault1">남</label>
 			</div>
 			<div class="form-check">
-			  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2">
+			  <input class="form-check-input" type="radio" value="여" name="gender" id="flexRadioDefault2">
 			  <label class="form-check-label" for="flexRadioDefault2">여</label>
 			</div>
 		</div>
