@@ -57,7 +57,7 @@ text-align: center;
    
 			<!--관리자로 로그인이 된 경우에만 새 글 쓰기 가능 -->
 			<c:if test="${loginInfo.admin eq 'Y'}">
-				<a class="btn btn-primary" href="regist.no" role="button" >새글쓰기</a>
+				<a class="btn btn-primary" href="regist.no" role="button" style="float: right;">새글쓰기</a>
 			</c:if>
 		
 	</div>

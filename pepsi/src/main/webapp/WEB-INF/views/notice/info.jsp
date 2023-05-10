@@ -68,7 +68,7 @@ table td { text-align: left; }
 	<c:forEach items='${vo.fileInfo}' var='f'>
 	<div class='align'>
 		<span>${f.filename}
-			<a href='download.bo?id=${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
+			<a href='download.no?id=${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
 		</span>
 	</div>
 	</c:forEach>
@@ -91,7 +91,10 @@ table td { text-align: left; }
 </article>
 		
 <script>
-
+$('.download').click(function (){
+	$('[name=file]').val( $(this).data('file'))
+	$('form').submit();
+});
 </script>
 	
 </body>
