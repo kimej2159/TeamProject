@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="trainer">
+ 
+  	<select id="trainerAllList" resultType="trainer.TrainerDTO">
+  		select g.gym_name , t.trainer_name , t.phone_number, t.price , t.trainer_picture from trainer t , gym g 
+  		where t.gym_id = g.gym_id
+  	</select>
+  	
+  	<select id="trainerList" resultType="trainer.TrainerDTO">
+  		select *
+  		from trainer t 
+  		where gym_id = #{gym_id}
+  	</select>
+  	
+  	<select id="trainerDetail" resultType="trainer.TrainerDTO">
+  		select * 
+  		from trainer
+  		where trainer_name = #{trainer_name} 
+  	</select>
+  	
+ </mapper>

@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+/* 이미지 */
+.img-fluid {
+  height: auto;
+  
+}
+
+
+
+
+.gym-detail {
+    width: 1200px;
+    height : 1200px;
+    flex-direction: row;
+    display: flex;
+    border-radius: 5px;
+    margin: 0 auto;
+    
+}
+
+.gym-detail-all {
+	width: 1200px;
+	height : 100%;
+	background-color: #ffffff;
+    overflow: hidden;
+    text-align: center;
+    vertical-align :middle;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    
+}
+
+.gym-detail-content {
+	text-align: left;
+	border : 2px solid lightgray;
+	height: 870px;
+	border-radius : 10px;
+	width: 500px;
+	margin-left: 2%;
+	padding: 2px;
+}
+
+
+@font-face {
+	font-family: 'GangwonEduPowerExtraBoldA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+main h1 , h2, h3, h4 , h5, h6 , p ,tr , th , td{
+	font-family: 'GangwonEduPowerExtraBoldA', sans-serif !important;
+}
+
+ table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+  	
+    text-align: left;
+    padding: 8px;
+    padding-left : 16px;
+    border-bottom: 1px solid #ddd;
+    
+  }
+td {
+  	height :50px;
+  	width : 450px;
+  	border-left: 1px solid #ddd;
+  }
+th {
+	height : 50px;
+  	width: 150px;
+    background-color: #fff;
+ }
+
+
+.row {
+	text-align: center; 	
+}
+
+
+
+#map {
+    width: 380px;
+    height: 380px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.gym-detail-image {
+    border: 2px solid lightgray;
+    border-radius : 10px;
+    height: 480px;
+    width: 60%;
+    padding: 2px;
+}
+
+.gym-detail-image-main {
+	width: 100%;
+}
+
+.gym-detail-image-sub {
+	width: 100%;
+	height: 20%;
+}
+
+
+
+.main-image {
+	height: 370px;
+	width: 98%;
+	border-radius: 5px;
+	margin: 8px auto;
+}
+
+
+.sub-image {
+  height: 90%;
+  width: 20%;
+  border-radius: 5px;
+  margin: auto 4px;
+  opacity: 1;
+}
+
+.sub-image:hover {
+  opacity: 0.5;
+}
+
+
+
+.location-td { 
+	display:flex;
+	padding : 0;
+	width:  380px;
+	height: 380px;
+}
+
+
+.gym-detail-iamge-trainer{
+	width: 100%;
+    height : 480px;
+	display: flex; /* Flexbox 레이아웃 사용 */
+ 	justify-content: center; /* 수평 가운데 정렬 */
+ 	
+}
+
+.gym-detail-iamge-trainer-list {
+	border-radius : 5px;
+	border: 2px solid lightgray;
+	height: 200px;
+	width:  150px;
+	flex-direction: row;
+	margin: 5px;
+}
+
+.trianer-image {
+	width: 150px;
+	height: 160px;
+	border-radius: 5px;
+	border: 0px;
+}
+

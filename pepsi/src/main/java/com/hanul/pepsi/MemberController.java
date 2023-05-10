@@ -31,19 +31,33 @@ public class MemberController {
 	
 	
 	
-	
-	@RequestMapping("/test")
-	public void mypage(MemberVO vo, HttpSession session) {
-		vo = (MemberVO)session.getAttribute("loginInfo");
-		vo.setPw(null);
-		vo.setPhone("01012345678");
-		service.member_update(vo);
-	}
-	
+	//마이페이지 수정 저장 처리 
+	@RequestMapping("/mypageSave")
+	public String mypage(MemberVO vo, HttpSession session, MultipartFile file, HttpServletRequest request) {
+		MemberVO login = (MemberVO)session.getAttribute("loginInfo");
+			
+	//		로그인이 되어있지 않은 상태에서 마이페이지 시도 시 로그인 화면으로 연결 
+			if(login==null) return "redirect:login";
+			
+			//첨부된 파일이 있는 경우
+			if( ! file.isEmpty()) {
+				vo.setProfile(common.fileUpload(file, "profile", request));
+			}else {
+				vo.setProfile(login.getProfile());
+			}
+			
+			service.member_update(vo);
+			
+			session.setAttribute("loginInfo", vo);
+			
+			return "redirect:/";
+		}
+		
+      // 마이페이지 화면 요청
 	  @RequestMapping("/mypage")
 	  public String mypage() {
 	  
-	  return "/member/mypage"; 
+	  return "member/mypage"; 
 	  
 	  }
 	 
@@ -241,6 +255,10 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+
+		
+		
 	
 	//비밀번호 변경 저장 처리 요청
 	@RequestMapping("/change")

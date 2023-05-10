@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* 카드뷰의 스타일을 설정하는 CSS */
+.card-container {
+   margin: 0 auto; 
+   
+}
+
+a:hover {
+    color: inherit;
+}
+
+.card {
+    width: 1000px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+    vertical-align :middle;
+    flex-direction: row;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+
+.card:hover {
+ 	background: #E4E4E4;
+}
+
+.card p , h2 , .price {
+	vertical-align: middle;
+	margin: 0px;
+	margin-left: 30px;
+
+}
+
+.card img {
+	width : 400px;
+	height : 300px;
+    object-fit: fill;
+   
+}
+
+.card h2 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.card p {
+    font-size: 30px;
+
+}
+
+.price {
+	margin-top : 70px;
+	font-weight: bolder;
+	font-size: 50px;
+	color: #ffc451;
+	text-align: left;
+}
+
+.card-text {
+	width:60%;
+	text-align: left;
+}
+
+
+
+
+
