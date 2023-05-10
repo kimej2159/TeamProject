@@ -11,5 +11,12 @@
   	<select id="gymList" resultType="gym.GymDTO">
   		select * from gym WHERE gym_id = #{gym_id}
   	</select>
+  	
+  	<select id="gymOfTrainer" resultType="gym.GymDTO">
+  		select g.* from gym g, trainer t WHERE g.gym_id = t.gym_id
+  		and trainer_name = #{trainer_name}
+  	</select>
+  	
+  	
   
  </mapper>

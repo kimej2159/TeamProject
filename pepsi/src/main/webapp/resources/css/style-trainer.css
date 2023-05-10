@@ -6,6 +6,10 @@
    
 }
 
+a:hover {
+    color: inherit;
+}
+
 .card {
     width: 1000px;
     margin-bottom: 30px;

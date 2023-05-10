@@ -34,5 +34,18 @@ public class GymDAO {
 		return (ArrayList<GymDTO>) list;
 	}
 
+	public ArrayList<TrainerDTO> select_trainerList(int gym_id) {
+		List<TrainerDTO> list = sql.selectList("trainer.trainerList", gym_id);
+		return (ArrayList<TrainerDTO>) list;
+	}
+
+	public ArrayList<GymDTO> select_GymofTrainer(String trainer_name) {
+		List<GymDTO> list = sql.selectList("gym.gymOfTrainer", trainer_name);
+		
+		
+		return  (ArrayList<GymDTO>) list;
+	}
+
+
 	
 }

@@ -32,5 +32,13 @@ public class TrainerDAO {
 		
 	}
 	
+	public ArrayList<TrainerDTO> select_trainer(String trainer_name) {
+		List<TrainerDTO> list = new ArrayList<>();
+		list = sql.selectList("trainer.trainerDetail" , trainer_name);
+		
+		return (ArrayList<TrainerDTO>) list;
+		
+	}
+	
 	
 }

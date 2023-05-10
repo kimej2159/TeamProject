@@ -38,25 +38,23 @@
 </head>
 <body>
 
-	<!-- Page Header-->
-	<jsp:include page="/WEB-INF/views/gym/gym_header.jsp">
-		<jsp:param value="센터찾기" name="subtitle" />
+	<jsp:include page="/WEB-INF/views/trainer/trainer_header.jsp">
+		<jsp:param value="강사찾기" name="subtitle" />
 	</jsp:include>
 	<!-- Main Content--123>
 
 
 	<main class="mb-4 gym-detail-contain">
 		<%
-		ArrayList<GymDTO> gymList = (ArrayList<GymDTO>) request.getAttribute("gymlist");
-		for (GymDTO gym : gymList) {
-			String[] convenienceFacilities = gym.getGym_facilities().split(",");
-			String[] additionalServices = gym.getGym_service().split(",");
+		ArrayList<TrainerDTO> trainerList = (ArrayList<TrainerDTO>) request.getAttribute("TrainerList");
+		for (TrainerDTO trainer : trainerList) {
+			
 			
 		%>
 
 		<!-- Main Content-->
 	<div>
-		<h1 style="margin: 20 auto;">헬스장 정보 한눈에 보기</h1>
+		<h1 style="margin: 20 auto;">트레이너 정보 한눈에 보기</h1>
 		<div class="gym-detail-all">
 			<div class="gym-detail" style="height: 1000px">
 
@@ -64,34 +62,33 @@
 
 					<div class="gym-detail-image-main">
 						<img id="main-image"
-							src="images/<%=gym.getGym_picture().split(",")[0]%>"
-							alt="<%=gym.getGym_name()%>" class="main-image">
+							src="images/<%=trainer.getTrainer_picture().split(",")[0]%>"
+							alt="<%=trainer.getTrainer_name()%>" class="main-image">
 						<div class="gym-detail-image-overlay"></div>
 					</div>
 					<div class="gym-detail-image-sub">
-						<% String[] images = gym.getGym_picture().split(",");
+						<% String[] images = trainer.getTrainer_picture().split(",");
     					for (int i = 0; i < images.length; i++) { %>
 						<img src="images/<%=images[i].trim()%>"
-							alt="<%=gym.getGym_name()%>" class="sub-image"
+							alt="<%=trainer.getTrainer_name()%>" class="sub-image"
 							onclick="changeMainImage(this.src)">
 						<% } %>
 					</div>
 
-					<p style="margin:20px 0 5px; font-size: 30px"><%= gym.getGym_name() %> 소속 트레이너</p>
-					<div class="gym-detail-iamge-trainer">
+					<p style="margin:20px 0 5px; font-size: 30px"><%= trainer.getTrainer_name() %> 소속 헬스장</p>
+					
+					<div class="gym-detail-iamge-trainer" >
 						
 							<%
-						ArrayList<TrainerDTO> trainerList = (ArrayList<TrainerDTO>) request.getAttribute("trainerlist");
-						for (TrainerDTO trainer : trainerList) {%>
-							<div class="gym-detail-iamge-trainer-list">
-								<img src="images/<%=trainer.getTrainer_picture().split(",")[0]%>"
+							ArrayList<GymDTO> gymList = (ArrayList<GymDTO>) request.getAttribute("GymList");
+							for (GymDTO gym : gymList) {%>
+							<div class="gym-detail-iamge-trainer-list" style="width: 500px; height: 300px;">
+								<img src="images/<%=gym.getGym_picture().split(",")[0]%>"
 									 class="trianer-image"
-									onclick="changeMainImage(this.src)">
-									<p style="margin:10px 0 5px; font-size: 20px"><%=trainer.getTrainer_name() %></p>
+									 style="width: 500px; height: 250px;">
+									<p style="margin:10px 0 5px; font-size: 20px"><%=gym.getGym_name() %> (<%=gym.getAddress() %> )</p>
 							</div>
 
-
-						<% } %>
 						
 
 					</div>
@@ -107,47 +104,24 @@
   }
 
 </script>
-				<div class="gym-detail-content">
+				<div class="gym-detail-content" style="height: 550px">
 					<table>
 						<tr>
 							<th>이름</th>
 							<td>
 								<div>
-									<%=gym.getGym_name()%>
+									<%=trainer.getTrainer_name()%>
 								</div>
 								<div>
-									(<%=gym.getAddress()%>)
+									(<%=gym.getGym_name()%>)
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<th>가격(월)</th>
-							<td><%=gym.getGym_price()%>원</td>
+							<td><%=trainer.getPrice()%>원</td>
 						</tr>
-						<tr>
-							<th>편의<br>시설
-							</th>
-							<td>
-								<%
-									for (String convenienceFacility : convenienceFacilities) {
-									%>
-								<div><%=convenienceFacility%></div> <%
- }
- %>
-							</td>
-						</tr>
-						<tr>
-							<th>부가<br>서비스
-							</th>
-							<td>
-								<%
-									for (String additionalService : additionalServices) {
-									%>
-								<div><%=additionalService%></div> <%
- }
- %>
-							</td>
-						</tr>
+		
 						<tr>
 							<th class="location-th">위치</th>
 							<td class="location-td">
@@ -207,7 +181,12 @@ geocoder.addressSearch('<%=gym.getAddress()%>'
 								map.setCenter(coords);
 							}
 						});
+						
+						
 	</script>
+	
+
+						<% } %>
 
 	<%
 		}
