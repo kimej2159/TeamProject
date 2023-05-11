@@ -84,7 +84,7 @@
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
 									<div
-										class="h5 font-weight-bold text-primary text-uppercase mb-3">
+										class="h5 h-title font-weight-bold text-primary text-uppercase mb-3">
 										<a onclick="fn_info( ${vo.id} )">${vo.title}</a>
 									</div>
 									<div class=" mb-0 font-weight-bold text-gray-800 mb-1">${vo.name}</div>
