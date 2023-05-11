@@ -64,4 +64,28 @@ public class BoardServiceImpl implements BoardService {
 		return dao.board_file_delete(removed);
 	}
 
+	@Override
+	public int board_comment_regist(BoardCommentVO vo) {
+		
+		return dao.board_comment_regist(vo);
+	}
+
+	@Override
+	public int board_comment_update(BoardCommentVO vo) {
+		
+		return dao.board_comment_update(vo);
+	}
+
+	@Override
+	public int board_comment_delete(int id) {
+		
+		return dao.board_comment_delete(id);
+	}
+
+	@Override
+	public List<BoardCommentVO> board_comment_list(int board_id) {
+		
+		return dao.board_comment_list(board_id);
+	}
+
 }
