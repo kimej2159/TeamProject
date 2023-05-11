@@ -70,10 +70,9 @@ table td { text-align: left; }
 		<span>${f.filename}
 			<a href='download.no?id=${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
 		</span>
+		<span class='preview'></span>
 	</div>
-	<div class="d-flex justify-content-between align-items-center">
-				<span id='preview'></span>
-	</div>
+	
 	</c:forEach>
 	<c:if test='${ empty vo.fileInfo}'>
 	<span class='gray'>첨부파일이 없습니다.</span>
@@ -94,11 +93,12 @@ table td { text-align: left; }
 </article>
 		
 <script>
-$(function(){
-	if( '${loginInfo.profile}' != '' )
-		$('#preview').html( "<img src='${loginInfo.profile}'>" )
-// 		$('#delete-file').css( 'display', 'block');
-})
+<c:forEach items="${vo.fileInfo}" var='f' varStatus='state'>
+if( isImage( '${f.filename}' ) ){
+	$('.preview').eq( ${state.index}).html( '<img src="${f.filepath}">' )
+	
+}
+</c:forEach>
 
 
 $('.download').click(function (){

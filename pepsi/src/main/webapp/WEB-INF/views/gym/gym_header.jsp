@@ -13,7 +13,7 @@
 						<h1>
 							<span class="main_color">센터찾기</span>
 						</h1>
-						<span class="subheading">내근처 헬스장 찾기!</span>
+						<span class="subheading">내근처 헬스장 찾기![${loginInfo.admin }]</span>
 					</div>
 				</div>
 			</div>

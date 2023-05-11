@@ -10,10 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-
 import gym.GymDAO;
 import gym.GymDTO;
+import member.MemberVO;
 import trainer.TrainerDTO;
 
 @Controller
@@ -21,7 +20,13 @@ public class GymController {
 	
 	@Autowired private GymDAO dao;
 	
+	//공지글 신규 작성 화면 요청
+	@RequestMapping("/regist.ch")
+	public String regist() {
+		return "notice/regist";
+	}
 	
+	//헬스장 목록 화면 불러오기
 	@RequestMapping(value = "/gym.ch")
 	public String CenterFind(HttpServletRequest request , HttpServletResponse response , Model model) {
 		ArrayList<GymDTO> list = new ArrayList<GymDTO>();
@@ -30,6 +35,8 @@ public class GymController {
 		return "gym/gym";
 	}
 	
+	
+	//헬스장 세부 정보 화면 불러오기
 	@RequestMapping(value = "/gym-detail.ch")
 	public String GymDetail(HttpServletRequest request , HttpServletResponse response , Model model) {
 		int gym_id = Integer.parseInt(request.getParameter("gym_id"));

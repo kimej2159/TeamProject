@@ -8,6 +8,7 @@
                             <img src='imgs/HanulFit-black.png'>
                         </ul>
                         <div class="small text-center text-muted fst-italic">Copyright &copy; HANULFIT</div>
+                        <div class="small text-center text-dark">[우] 61928 광주 서구 경열로 3 </div>
                     </div>
                 </div>
             </div>
