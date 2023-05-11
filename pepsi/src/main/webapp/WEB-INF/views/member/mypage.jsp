@@ -158,12 +158,13 @@ span { color:#ff0000; margin-right: 5px; }
 			</div>
 		</div>
 		<input type="hidden" name='id' value='${loginInfo.id}'>
+		<input type="hidden" name='delete' value='0'>
 	</form>
 		<div class="position-relative">
 			<div class="position-absolute top-100 start-50 translate-middle ">
 <!-- 			<button class="mt-5 btn btn-primary btn-block origin btn-join" >회원가입</button> -->
 			<button type="button" class="mt-5 btn btn-primary btn-lg origin btn-save ">저장</button>
-			<button type="button" class="mt-5 btn btn-primary btn-lg origin" href="" >취소</button>
+			<button type="button" class="mt-5 btn btn-primary btn-lg origin"  >취소</button>
 			</div>
 		</div>
 		
@@ -258,9 +259,13 @@ $('.btn-save').click(function(){
 // 	if( tagIsInvalid( $('[name=pw]') ) ) return;
 // 	if( tagIsInvalid( $('[name=pw_ck]') ) ) return;
 	if( tagIsInvalid( $('[name=email]') ) ) return;
-	
+	if( $('#attach-file').val() != '' ) $('[name=delete]').val( 0 )	
 	$('form').submit();
 });
+
+$('#delete-file').click(function(){
+	$('[name=delete]').val( 1 )	
+})
 
 //태그의 입력값이 유효하지 않는지 확인할 함수
 function tagIsInvalid( tag ){

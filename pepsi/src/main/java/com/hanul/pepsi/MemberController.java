@@ -33,7 +33,7 @@ public class MemberController {
 	
 	//마이페이지 수정 저장 처리 
 	@RequestMapping("/mypageSave")
-	public String mypage(MemberVO vo, HttpSession session, MultipartFile file, HttpServletRequest request) {
+	public String mypage(MemberVO vo, int delete, HttpSession session, MultipartFile file, HttpServletRequest request) {
 		MemberVO login = (MemberVO)session.getAttribute("loginInfo");
 			
 	//		로그인이 되어있지 않은 상태에서 마이페이지 시도 시 로그인 화면으로 연결 
@@ -42,8 +42,10 @@ public class MemberController {
 			//첨부된 파일이 있는 경우
 			if( ! file.isEmpty()) {
 				vo.setProfile(common.fileUpload(file, "profile", request));
-			}else {
-				vo.setProfile(login.getProfile());
+			}else {				
+				vo.setProfile(delete==0 ? login.getProfile() : null);
+				if( delete == 1 )
+					common.file_delete(login.getProfile(), request );
 			}
 			
 			service.member_update(vo);
