@@ -71,6 +71,9 @@ table td { text-align: left; }
 			<a href='download.no?id=${f.id}'><i class="fa-solid fa-file-arrow-down"></i></a>
 		</span>
 	</div>
+	<div class="d-flex justify-content-between align-items-center">
+				<span id='preview'></span>
+	</div>
 	</c:forEach>
 	<c:if test='${ empty vo.fileInfo}'>
 	<span class='gray'>첨부파일이 없습니다.</span>
@@ -91,6 +94,13 @@ table td { text-align: left; }
 </article>
 		
 <script>
+$(function(){
+	if( '${loginInfo.profile}' != '' )
+		$('#preview').html( "<img src='${loginInfo.profile}'>" )
+// 		$('#delete-file').css( 'display', 'block');
+})
+
+
 $('.download').click(function (){
 	$('[name=file]').val( $(this).data('file'))
 	$('form').submit();
