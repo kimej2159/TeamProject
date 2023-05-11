@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,38 @@ public class MemberController {
 	private String NAVER_ID = "Xggyd4Htf9Fg6z2uPEgn";
 	private String NAVER_SECRET ="5ZIZMjV2uk";
 	
+	
+	
+	//마이페이지 수정 저장 처리 
+	@RequestMapping("/mypageSave")
+	public String mypage(MemberVO vo, HttpSession session, MultipartFile file, HttpServletRequest request) {
+		MemberVO login = (MemberVO)session.getAttribute("loginInfo");
+			
+	//		로그인이 되어있지 않은 상태에서 마이페이지 시도 시 로그인 화면으로 연결 
+			if(login==null) return "redirect:login";
+			
+			//첨부된 파일이 있는 경우
+			if( ! file.isEmpty()) {
+				vo.setProfile(common.fileUpload(file, "profile", request));
+			}else {
+				vo.setProfile(login.getProfile());
+			}
+			
+			service.member_update(vo);
+			
+			session.setAttribute("loginInfo", vo);
+			
+			return "redirect:/";
+		}
+		
+      // 마이페이지 화면 요청
+	  @RequestMapping("/mypage")
+	  public String mypage() {
+	  
+	  return "member/mypage"; 
+	  
+	  }
+	 
 
 	//아이디 중복 확인 
 	@ResponseBody @RequestMapping("/id_check")
@@ -222,6 +255,10 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
+	
+
+		
+		
 	
 	//비밀번호 변경 저장 처리 요청
 	@RequestMapping("/change")

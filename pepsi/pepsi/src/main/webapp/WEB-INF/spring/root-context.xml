@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan 
+    base-package="member, common, notice, board , trainer , gym"/>
+
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 	config.xml에 있는 객체를 참조할 수 있도록 선언  -->
+	<import resource="classpath:db/*.xml"/> 
+	
+	
+
+</beans>
