@@ -79,4 +79,28 @@ public class BoardDAO implements BoardService {
 		return sql.delete("bo.fileDelete", removed);
 	}
 
+	@Override
+	public int board_comment_regist(BoardCommentVO vo) {
+
+		return sql.insert("bo.commentInsert", vo);
+	}
+
+	@Override
+	public int board_comment_update(BoardCommentVO vo) {
+		
+		return sql.update("bo.commentUpdate", vo);
+	}
+
+	@Override
+	public int board_comment_delete(int id) {
+		
+		return sql.delete("bo.commentDelete", id);
+	}
+
+	@Override
+	public List<BoardCommentVO> board_comment_list(int board_id) {
+		
+		return sql.selectList("bo.commentlist", board_id);
+	}
+
 }

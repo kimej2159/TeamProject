@@ -102,4 +102,29 @@ delete from board_file where id in ( ${removed} )
 </delete>
 
 
+<!-- 방명록 댓글 신규저장 -->
+<insert id="commentInsert">
+insert into board_comment( content, writer, board_id)
+values (#{content}, #{writer}, #{board_id} )
+</insert>
+
+<!-- 방명록 댓글 목록조회 -->
+<select id="commentlist" resultType="board.BoardCommentVO">
+select c.*, name
+from board_comment c inner join member m on c.writer = m.id
+where board_id = #{board_id}
+order by c.id desc
+</select>
+
+<!-- 방명록 댓글 변경저장 -->
+<update id="commentUpdate">
+update board_comment set content = #{content} where id = #{id}
+</update>
+
+<!-- 방명록 댓글 삭제 -->
+<delete id="commentDelete">
+delete from board_comment where id=#{id}
+</delete>
+
+
 </mapper>

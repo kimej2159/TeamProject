@@ -56,7 +56,7 @@ input[type=file].attach-file {display: none;}
 		
 	
 	</form>
-	<div class="d-grid gap-2 d-md-block text-center">
+	<div class="btn-toolbar gap-2 justify-content-center">
 	  <a class="btn btn-primary  btn-save" >저장</a>
 	  <a class="btn btn-secondary "  href='list.bo'>취소</a>
 	</div>

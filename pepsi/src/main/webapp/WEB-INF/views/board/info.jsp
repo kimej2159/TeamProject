@@ -15,6 +15,7 @@ table td { text-align: left; }
 .btnSet{ 	margin: 20px auto; }
 #preview img, .preview img {max-height: 30px;}
 .btn {	color: #ffffff;}
+#comment-regist {align-content: center;}
 </style>
 </head>
 <body>
@@ -65,12 +66,26 @@ table td { text-align: left; }
 </tr>
 </table>
 
-<div class='btnSet text-center'>
+<div class='btn-toolbar gap-2 justify-content-center'>
 <a class='btn btn-primary' id='list'>목록으로</a>
 <c:if test="${vo.writer eq loginInfo.id}">
 <a class='btn btn-primary' id='modify'>정보수정</a>
 <a class='btn btn-primary' id='delete'>정보삭제</a>
 </c:if>
+</div>
+
+<div id='comment-regist ' class="d-flex justify-content-center ">
+	<div style="width: 800px;">
+		<div class="w-100 justify-content-between  d-flex align-items-center mb-1">
+			<span>댓글작성</span>
+			<a class='btn btn-primary' id='regist'>댓글등록</a>
+		</div>
+		<textarea id='comment' class="w-100" style="height:100px; box-sizing: border-box;"></textarea>
+	</div>
+</div>
+
+
+<div id='comment-list'class="d-flex justify-content-center ">
 </div>
 
 </div>
@@ -140,7 +155,7 @@ $('#regist').click(function(){
 	}
 });
 
-//comment_list();
+comment_list();
 
 // 댓글목록조회
 function comment_list(){

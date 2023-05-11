@@ -10,9 +10,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import board.BoardCommentVO;
 import board.BoardFileVO;
 import board.BoardPageVO;
 import board.BoardServiceImpl;
@@ -202,6 +206,58 @@ public class BoardController {
 
 	
 	
+	
+	// 방명록 댓글 저장처리 요청
+	@ResponseBody @RequestMapping("/board/comment/insert")
+	public boolean board_comment_regist(BoardCommentVO vo) {
+		
+		// 화면에서 입력한 댓글정보로 DB에 신규저장
+		return service.board_comment_regist(vo)==1 ? true : false;
+		
+	}
+	
+	
+	// 방명록 댓글 목록조회 요청
+	@RequestMapping("board/comment/list/{id}")
+	public String board_comment_list(@PathVariable int id, Model model) {
+		
+		// 해당 방명록글에 대한 댓글목록을 DB에서 조회해온다
+		List<BoardCommentVO> list = service.board_comment_list(id);
+		
+		// 화면에 출력할 수 있도록 Model에 담는다
+		model.addAttribute("list", list);
+		model.addAttribute("crlf", "\r\n");
+		model.addAttribute("lf", "\n");
+		
+		return "board/comment/comment_list";
+		
+	}
+	
+	
+	// 방명록 댓글 변경저장처리 요청
+//	@ResponseBody @RequestMapping("board/comment/update")
+//	public void board_comment_update(@RequestBody BoardCommentVO vo) {
+//		service.board_comment_update(vo);
+//	}
+	@ResponseBody @RequestMapping(value="board/comment/update", produces="application/text; charset=utf-8")
+	public String board_comment_update(@RequestBody BoardCommentVO vo) {
+		return service.board_comment_update(vo)==1?"성공":"실패";
+	}
+	
+	
+	
+	//  방명록 댓글 삭제처리 요청
+	@ResponseBody @RequestMapping("/board/comment/delete/{id}")
+	public void board_comment_delete(@PathVariable int id) {
+		// 선택한 댓글을 DB에서 삭제
+		service.board_comment_delete(id);
+	}
+	
+	
+	
+	
+	
+		
 	
 	
 	
