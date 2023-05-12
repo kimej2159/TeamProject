@@ -57,6 +57,7 @@
                
 	                <button type="reset" class="btn btn-primary btn-block" id='origin' >다시입력</button>
 					<button type="button" class="btn btn-primary btn-block" id="chg" onclick='if( emptyCheck() ) $("form").submit()'>비밀번호 변경</button>
+					
 	        	</div>	
 
               </form>

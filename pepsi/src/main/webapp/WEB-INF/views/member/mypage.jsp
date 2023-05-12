@@ -164,7 +164,7 @@ span { color:#ff0000; margin-right: 5px; }
 			<div class="position-absolute top-100 start-50 translate-middle ">
 <!-- 			<button class="mt-5 btn btn-primary btn-block origin btn-join" >회원가입</button> -->
 			<button type="button" class="mt-5 btn btn-primary btn-lg origin btn-save ">저장</button>
-			<button type="button" class="mt-5 btn btn-primary btn-lg origin"  >취소</button>
+			<a href=''><button type="button" class="mt-5 btn btn-primary btn-lg origin"  >취소</button></a>
 			</div>
 		</div>
 		
