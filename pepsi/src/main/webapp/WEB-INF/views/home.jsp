@@ -5,6 +5,12 @@
     <head>
         <meta charset="utf-8" />
         <title>한울핏</title>
+        
+<style>
+.btn {
+	color: #ffffff;
+}
+</style>
     </head>
     
    <header class="masthead" style="background-image: url('${pageContext.request.contextPath}/resources/assets/img/home-bg.JPG')">
