@@ -95,6 +95,7 @@ public class MemberController {
 			
 			//회원가입 후 바로 로그인
 			request.getSession().setAttribute("loginInfo", vo);
+			
 			msg.append("alert('회원가입을 축하합니다!'); location='").append( common.appURL(request)).append("' ");
 		}else {
 			msg.append("alert('회원가입에 실패하였습니다'); history.go(-1)");
@@ -280,6 +281,8 @@ public class MemberController {
 		session.setAttribute("loginInfo", vo);
 		
 //		응답화면 연결 : 다시 웰컴 페이지로
+	//	alert(아이디나 이메일이 맞지 않습니다\\n확인하세요! );
+		
 		return "redirect:/";
 	}
 	
