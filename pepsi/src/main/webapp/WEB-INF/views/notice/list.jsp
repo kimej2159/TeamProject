@@ -37,6 +37,7 @@ text-align: center;
 </jsp:include>
 <!-- Post Content-->
 <article class="mb-4">
+
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 ">
@@ -49,8 +50,6 @@ text-align: center;
 					${page.search eq 'title' ? 'selected' : ''}>제목</option>
 				<option value='content'
 					${page.search eq 'content' ? 'selected' : ''}>내용</option>
-<!-- 				<option value='writer' -->
-<%-- 					${page.search eq 'writer' ? 'selected' : ''}>작성자</option> --%>
 		    </select>
 	  <input type='text' name='keyword' value='${page.keyword}' class='w-250px'>
 	  <a class='btn btn-primary arrow-middle' onclick='$("form").submit()'>검색</a>
@@ -64,23 +63,26 @@ text-align: center;
 	<input type='hidden' name='curPage' value='1'>
 </form> 
 
-	<table class='table table-hover'>
+	<table class='table table-hover text-center'>
 	<colgroup>
 		<col width='100px'>
 		<col width='300px'>
-		<col width='100px'>
+		<col width='140px'>
+		<col width='140px'>
 		<col width='100px'>
 	</colgroup>
 	<tr><th class='centerr'>번호</th>
 		<th class='centerr'>제목</th>
 		<th class='centerr'>작성자</th>
 		<th class='centerr'>작성일</th>
+		<th class='centerr'>조회수</th>
 	</tr>
 	<c:forEach items='${page.list}' var='vo'>
 	<tr><td class='centerr'>${vo.no}</td>
 		<td><a href='info.no?id=${vo.id}'>${vo.title}</a></td>
 		<td class='centerr'>${vo.name}</td>
 		<td class='centerr'>${vo.writedate}</td>
+		<td class='centerr'>${vo.readcnt}</td>
 	</tr>
 	</c:forEach>
 	</table>
