@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import board.BoardPageVO;
 import common.CommonUtility;
 import member.MemberServiceImpl;
 import member.MemberVO;
@@ -95,7 +96,7 @@ public class NoticeController {
 	
 	//선택한 공지글 삭제처리 요청
 	@RequestMapping("/delete.no")
-	public String delete(int id, HttpServletRequest request, Model model) {
+	public String delete(int id, NoticePageVO page, HttpServletRequest request, Model model) {
 		
 		//첨부파일 정보를 조회해둔다
 		List<NoticeFileVO> files = service.notice_info(id).getFileInfo();
@@ -114,7 +115,7 @@ public class NoticeController {
 		// redirect 화면에서 출력 할 정보를 Model 에 담는다
 		model.addAttribute("url", "list.no");
 		model.addAttribute("id", id);
-//		model.addAttribute("page", page);
+		model.addAttribute("page", page);
 		
 		return "notice/redirect";
 					

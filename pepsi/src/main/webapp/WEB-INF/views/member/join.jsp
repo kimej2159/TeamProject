@@ -87,8 +87,7 @@ span { color:#ff0000; margin-right: 5px; }
 		<div class="mb-3">
 			<label>이메일</label>
 			<input type="text"  class="chk form-control"  name='email' placeholder="이메일을 입력하세요">
-        	<div class='alert alert-success valid'>비밀번호를 입력하세요<br>(영문대/소문자,숫자 모두 포함)</div>
- 			
+        	<div class='alert alert-success valid'>이메일을 입력하세요<br>(영문대/소문자,숫자 모두 포함)</div>
         </div>
         <div class="mb-3">
 		<label>프로필 이미지</label>
@@ -97,10 +96,11 @@ span { color:#ff0000; margin-right: 5px; }
 					<input type='file' class="form-control" name='file' accept="image/*" id='attach-file'>
 				</label>
 			</div>
-			<div class="d-flex justify-content-between">
+			<div class="d-flex">
 				<span id='preview' class='mt-4'></span>
-				<div id="delete-file">
+				<div id="delete-file" class='mt-5'>
 					<a><i class="font-img-r fa-regular fa-trash-can"></i></a>
+				
 				</div>	
 			</div>
 		</div>

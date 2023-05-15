@@ -68,22 +68,7 @@ span { color:#ff0000; margin-right: 5px; }
           <label for="name" ><span>*</span>이름</label>
           <input type="text" id="name" class="chk form-control" name='name' placeholder="이름을 입력하세요" value="${loginInfo.name}">
          </div>
-<!-- 		<div class="mb-3">
-			<label><span>*</span>아이디</label>
-			<input type="text" class="chk form-control"  name='id' placeholder="아이디를 입력하세요">
-       		<button type="button" class="my-2 btn-id btn btn-primary btn-block origin" >아이디중복확인</button>
-        	<div class='alert alert-success valid'>아이디를 입력하세요<br></div>
-        </div>
-         <div class="mb-3">
-           <label for="userpw" ><span>*</span>비밀번호</label>
-           <input type="password" id="userpw" class="chk form-control" name='pw' placeholder="새 비밀번호를 입력하세요">
-           <div class='alert alert-success valid'>비밀번호를 입력하세요<br>(영문대/소문자,숫자 모두 포함)</div>
-         </div>
-         <div class="mb-3">
-            <label ><span>*</span>비밀번호 확인</label>
-            <input type="password" class="chk form-control"  name='pw_ck'  placeholder="비밀번호를 다시 입력하세요">
-            <div class='alert alert-success invalid'>비밀번호를 다시 입력하세요</div>
-         </div> -->
+
 		<div  class="mb-3">
 			<label>성별</label>
 			<div class="form-check">
@@ -109,25 +94,13 @@ span { color:#ff0000; margin-right: 5px; }
 					<input type='file' class="form-control" name='file' accept="image/*" id='attach-file' style='display:none'>
 				</label>
 			</div>
-			<div class="d-flex justify-content-between align-items-center">
+			<div class="d-flex  align-items-center">
 				<span id='preview'></span>
-				<div id="delete-file" >
+				<div id="delete-file"  class='mt-5' >
 					<a><i class="font-img-r fa-regular fa-trash-can"></i></a>
 				</div>	
 			</div>
-		<!--  
-			<div class="row">
-				<label>
-					<input type='file' class="form-control" name='file' accept="image/*" id='attach-file'>
-				</label>
-			</div>
-			<div class="d-flex justify-content-between">
-				<span id='preview' class='mt-4'></span>
-				<div id="delete-file">
-					<a><i class="font-img-r fa-regular fa-trash-can"></i></a>
-				</div>	
-			</div>
-		-->
+
 		</div>
 		<div  class="mb-3">
 			<label>생년월일</label>
@@ -162,7 +135,6 @@ span { color:#ff0000; margin-right: 5px; }
 	</form>
 		<div class="position-relative">
 			<div class="position-absolute top-100 start-50 translate-middle ">
-<!-- 			<button class="mt-5 btn btn-primary btn-block origin btn-join" >회원가입</button> -->
 			<button type="button" class="mt-5 btn btn-primary btn-lg origin btn-save ">저장</button>
 			<a href=''><button type="button" class="mt-5 btn btn-primary btn-lg origin"  >취소</button></a>
 			</div>
@@ -237,27 +209,7 @@ $('.btn-save').click(function(){
 		alert('이름을 입력하세요!');
 		$('[name=name]').focus();
 	}
-	
-	/* //중복확인O + 이미 사용중
-	var _id = $('[name=id]');
-	if( _id.hasClass('chked') ){
-		if( _id.siblings('div').hasClass('invalid') ){
-			alert('회원가입 불가\n' + member.id.unUsable.desc);
-			_id.focus();
-			return;
-		}		
-	}else{
-	//중복확인X
-		if( tagIsInvalid( _id ) ) return;
-		else{
-			alert('회원가입 불가\n' + member.id.valid.desc );
-			_id.focus();
-			return;
-		}
-	}
-	 */
-// 	if( tagIsInvalid( $('[name=pw]') ) ) return;
-// 	if( tagIsInvalid( $('[name=pw_ck]') ) ) return;
+
 	if( tagIsInvalid( $('[name=email]') ) ) return;
 	if( $('#attach-file').val() != '' ) $('[name=delete]').val( 0 )	
 	$('form').submit();

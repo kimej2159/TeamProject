@@ -21,5 +21,13 @@
   		from trainer
   		where trainer_name = #{trainer_name} 
   	</select>
+
+	<select id="searchTrainer" resultType="trainer.TrainerDTO">
+		select g.gym_name , t.trainer_name , t.phone_number, t.price , t.trainer_picture from trainer t , gym g 
+  		where t.gym_id = g.gym_id
+  		and trainer_name LIKE '%' || #{search} || '%'
+		
+	</select>
+  
   	
  </mapper>

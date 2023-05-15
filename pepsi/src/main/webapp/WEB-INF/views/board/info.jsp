@@ -121,7 +121,7 @@ $('#list, #delete, #modify').click(function(){
 	
 	$('form').attr('action', $(this).attr('id') + '.bo')
 	if( $(this).attr('id') == 'delete' ){
-		if(confirm('정말정말정말 삭제?')){
+		if(confirm('삭제하시겠습니까?')){
 			$('form').submit();
 		}
 	}else
@@ -133,7 +133,7 @@ $('#regist').click(function(){
 		alert('댓글을 입력하세요!');
 		$('#comment').focus();
 	}else if( ${empty loginInfo}){
-		alert('댓글 등록하려면 로그인하세여~!');
+		alert('댓글 등록하려면 로그인하세요');
 		location = 'login'
 	}else{
 		$.ajax({
@@ -142,11 +142,11 @@ $('#regist').click(function(){
 			success: function( response ){
 				console.log( response )
 				if(response){
-					alert('댓글등록!');
+					alert('성공적으로 댓글을 등록하였습니다');
 					$('#comment').val('');
 					comment_list();
 				}else{
-					alert('댓글실패!');
+					alert('댓글 등록에 실패하였습니다');
 				}
 			}, error: function(req, text){
 				alert(text+':'+req.status);

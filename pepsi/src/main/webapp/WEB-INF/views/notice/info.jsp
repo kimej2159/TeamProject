@@ -91,8 +91,21 @@ table td { text-align: left; }
 
 </div>
 </article>
+
+<form method='post' action='download.bo'>
+<input type='hidden' name='file'>
+<input type='hidden' name='id' value='${vo.id}'>
+<input type='hidden' name='curPage' value='${page.curPage}'>
+<input type='hidden' name='search' value='${page.search}'>
+<input type='hidden' name='keyword' value='${page.keyword}'>
+<input type='hidden' name='pageList' value='${page.pageList}'>
+<input type='hidden' name='viewType' value='${page.viewType}'>
+
+</form>
 		
 <script>
+
+
 <c:forEach items="${vo.fileInfo}" var='f' varStatus='state'>
 if( isImage( '${f.filename}' ) ){
 	$('.preview').eq( ${state.index}).html( '<img src="${f.filepath}">' )
@@ -104,6 +117,18 @@ if( isImage( '${f.filename}' ) ){
 $('.download').click(function (){
 	$('[name=file]').val( $(this).data('file'))
 	$('form').submit();
+});
+
+
+$('#list, #delete, #modify').click(function(){
+	
+	$('form').attr('action', $(this).attr('id') + '.no')
+	if( $(this).attr('id') == 'delete' ){
+		if(confirm('삭제하시겠습니까?')){
+			$('form').submit();
+		}
+	}else
+		$('form').submit();
 });
 </script>
 	
