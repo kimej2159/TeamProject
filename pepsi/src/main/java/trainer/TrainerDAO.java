@@ -39,6 +39,13 @@ public class TrainerDAO {
 		return (ArrayList<TrainerDTO>) list;
 		
 	}
-	
+
+	//검색로직
+	public ArrayList<TrainerDTO> select_trainerByNameOrAddress(String search) {
+		List<TrainerDTO> list = sql.selectList("trainer.searchTrainer", search);
+		
+		return (ArrayList<TrainerDTO>) list;
+	    
+	}
 	
 }

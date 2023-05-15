@@ -16,7 +16,9 @@
   		select g.* from gym g, trainer t WHERE g.gym_id = t.gym_id
   		and trainer_name = #{trainer_name}
   	</select>
-  	
-  	
+
+	<select id="searchGym" resultType="gym.GymDTO">
+		SELECT * FROM gym WHERE gym_name LIKE '%' || #{search} || '%' OR address LIKE '%' || #{search} || '%'
+	</select>
   
  </mapper>
