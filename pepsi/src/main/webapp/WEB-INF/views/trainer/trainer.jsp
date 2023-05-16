@@ -36,7 +36,7 @@
 				<div class="search-form-edit"
 					style="display: flex; flex-direction: row; align-items: center;">
 					<input type="text" class="form-control" id="searchKeyword"
-						name="searchKeyword" placeholder="트레이너 이름 또는 주소 입력하세요">
+						name="searchKeyword" placeholder="트레이너 이름을 입력하세요">
 				</div>
 				<div class="search-form-btn"
 					style="display: flex; align-items: center;">
