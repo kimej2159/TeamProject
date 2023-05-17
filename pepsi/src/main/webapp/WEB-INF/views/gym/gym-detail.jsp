@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
@@ -41,7 +42,7 @@
 		<jsp:param value="센터찾기" name="subtitle" />
 	</jsp:include>
 	<!-- Main Content--123>
-
+	
 
 	<main class="mb-4 gym-detail-contain">
 		<%
@@ -54,6 +55,19 @@
 
 		<!-- Main Content-->
 	<div>
+
+
+		<div onclick="goBack()"
+			style="display: flex; justify-content: flex-start; align-items: center;margin-left: 13%; height: 50px;" >
+			<img alt="" src="images/arrow-back.png" >
+			<p style="font-size: 30px; padding: 20px 0 10px; margin-top: 35px;">뒤로가기</p>
+		</div>
+
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
 		<h1 style="margin: 20 auto;">헬스장 정보 한눈에 보기</h1>
 		<div class="gym-detail-all">
 			<div class="gym-detail" style="height: 1000px">
@@ -74,14 +88,14 @@
 							onclick="changeMainImage(this.src)">
 						<% } %>
 					</div>
-
+		
 					<p style="margin:20px 0 5px; font-size: 30px"><%= gym.getGym_name() %> 소속 트레이너</p>
-					<div class="gym-detail-iamge-trainer">
-						
-							<%
+					<div class="gym-detail-iamge-trainer"  >
+						<%
 						ArrayList<TrainerDTO> trainerList = (ArrayList<TrainerDTO>) request.getAttribute("trainerlist");
 						for (TrainerDTO trainer : trainerList) {%>
-							<div class="gym-detail-iamge-trainer-list">
+					
+							<div class="gym-detail-iamge-trainer-list" onclick='javascript:location="trainer-detail.ch?trainer_name=<%=trainer.getTrainer_name()%>"'>
 								<img src="images/<%=trainer.getTrainer_picture().split(",")[0]%>"
 									 class="trianer-image"
 									onclick="changeMainImage(this.src)">
@@ -211,11 +225,7 @@ geocoder.addressSearch('<%=gym.getAddress()%>'
 		}
 		%>
 
+	</main>
 	
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
 </body>
 </html>

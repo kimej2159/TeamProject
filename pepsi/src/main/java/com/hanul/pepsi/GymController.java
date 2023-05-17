@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import gym.GymDAO;
 import gym.GymDTO;
@@ -61,6 +62,16 @@ public class GymController {
 		
 	}
 
+	
+	//검색로직
+	@RequestMapping(value = "/gym-search.ch", method = RequestMethod.POST)
+	public String searchGym(HttpServletRequest request, HttpServletResponse response, Model model) {
+	    String searchKeyword = request.getParameter("searchKeyword");
+	    ArrayList<GymDTO> gymList = dao.select_gymByNameOrAddress(searchKeyword);
+	    model.addAttribute("gymlist", gymList);
+	    return "gym/gym";
+	}
+	
 
 	
 	

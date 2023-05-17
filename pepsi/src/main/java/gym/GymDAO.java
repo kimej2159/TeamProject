@@ -45,6 +45,15 @@ public class GymDAO {
 		
 		return  (ArrayList<GymDTO>) list;
 	}
+	
+	//검색로직
+	public ArrayList<GymDTO> select_gymByNameOrAddress(String search) {
+		List<GymDTO> list = sql.selectList("gym.searchGym", search);
+		
+		return (ArrayList<GymDTO>) list;
+	    
+	}
+
 
 
 	

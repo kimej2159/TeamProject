@@ -39,7 +39,11 @@ var member = {
 		usable: { code:'valid', desc:'사용가능한 아이디입니다' },
 		unUsable: { code:'invalid', desc:'이미 사용중인 아이디입니다' },
 	},
+		
+//	전체 문자에 대해 스페이스바가 있는지 확인하는 코드
+	space: /\s/g,
 	
+//비밀번호 형식 지정		
 	pw_status: function( pw ){
 		var reg = /[^a-zA-Z0-9]/g, upper = /[A-Z]/g, lower=/[a-z]/g, digit=/[0-9]/g;
 		if( pw=='' ) return this.common.empty;
@@ -51,10 +55,7 @@ var member = {
 					|| !digit.test(pw) ) return this.pw.lack;
 		else 							return this.pw.valid;
 	},
-	
-//	전체 문자에 대해 스페이스바가 있는지 확인하는 코드
-	space: /\s/g,
-	
+
 //	비밀번호 확인 일치/불일치 
 	pw_ck_status: function( pw_ck ){
 		if( pw_ck=='' )	return this.common.empty;

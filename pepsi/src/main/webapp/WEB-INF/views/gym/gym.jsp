@@ -30,29 +30,6 @@
 <link href="css/style-gym.css" rel="stylesheet" />
 </head>
 
-<style>
-.btnSet { margin: 20px auto; }
-.page-list{display: flex; justify-content: center; line-height: 36px;}
-.page-list a, .page-list span{text-align: center;
-	width: 38px; height: 38px; margin: 1px;
-	border: 1px solid transparent;
-}
-.page-list span{border:1px solid #33676d; color: #3367d6;}
-.page-list a:hover{cursor: pointer; background-color: rgb(51, 103, 214, 0.1);}
-/* .h-title {cursor: pointer;} */
-
-.wd{
-width: 100px;
-
-}
-.centerr{
-text-align: center;
-}
-
-.btn {
-	color: #ffffff;
-}
-</style>
 
 <body>
 	<!-- Page Header-->
@@ -66,29 +43,22 @@ text-align: center;
 		<div class="card-container px-4 px-lg-5">
 		 <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 ">
-		<form method='post' action='list.no'>          
-		    <div id='list-top'>
-		  			<select name='search' class='wd'>
-				    	<option value='all' ${page.search eq 'all' ? 'selected' : ''}>전체</opt-ion>
-						<option value='title'
-							${page.search eq 'title' ? 'selected' : ''}>제목</option>
-						<option value='content'
-							${page.search eq 'content' ? 'selected' : ''}>내용</option>
-		<!-- 				<option value='writer' -->
-		<%-- 					${page.search eq 'writer' ? 'selected' : ''}>작성자</option> --%>
-				    </select>
-			  <input type='text' name='keyword' value='${page.keyword}' class='w-250px'>
-			  <a class='btn btn-primary arrow-middle' onclick='$("form").submit()'>검색</a>
-		   
-					<!--관리자로 로그인이 된 경우에만 새 글 쓰기 가능 -->
-					<c:if test="${loginInfo.admin eq 'Y'}">
-						<a class="btn btn-primary" href="regist.ch" role="button" style="float: right;">새글쓰기</a>
-					</c:if>
-				
+		<form action="gym-search.ch" method="post">
+			<div class="search-form"
+				style="display: flex; justify-content: center; align-items: center; width: 800px; margin: 0 auto;">
+				<div class="search-form-edit"
+					style="display: flex; flex-direction: row; align-items: center;">
+					<input type="text" class="form-control" id="searchKeyword"
+						name="searchKeyword" placeholder="헬스장 이름 또는 주소를 입력하세요">
+				</div>
+				<div class="search-form-btn"
+					style="display: flex; align-items: center;">
+					<button type="submit" class="btn btn-primary">
+						검색 <span class="sr-only">검색</span>
+					</button>
+				</div>
 			</div>
-<!-- 			<input type='hidden' name='curPage' value='1'> -->
-		</form> 
-		
+		</form>
 		
 		<!--------------------------------------------  -->
 		<%

@@ -39,9 +39,19 @@
 	<jsp:include page="/WEB-INF/views/trainer/trainer_header.jsp">
 		<jsp:param value="강사찾기" name="subtitle" />
 	</jsp:include>
-	<!-- Main Content--123>
+	<!-- Main Content-->
 
+		<div onclick="goBack()"
+			style="display: flex; justify-content: flex-start; align-items: center;margin-left: 13%; height: 50px;" >
+			<img alt="" src="images/arrow-back.png" >
+			<p style="font-size: 30px; padding: 20px 0 10px; margin-top: 35px;">뒤로가기</p>
+		</div>
 
+		<script>
+			function goBack() {
+				window.history.back();
+			}
+		</script>
 	<main class="mb-4 gym-detail-contain">
 		<%
 		ArrayList<TrainerDTO> trainerList = (ArrayList<TrainerDTO>) request.getAttribute("TrainerList");
@@ -49,6 +59,9 @@
 			
 			
 		%>
+
+		
+
 
 		<!-- Main Content-->
 	<div>
@@ -74,12 +87,13 @@
 					</div>
 
 					<p style="margin:20px 0 5px; font-size: 30px"><%= trainer.getTrainer_name() %> 소속 헬스장</p>
-					
-					<div class="gym-detail-iamge-trainer" >
-						
-							<%
+					<%
 							ArrayList<GymDTO> gymList = (ArrayList<GymDTO>) request.getAttribute("GymList");
 							for (GymDTO gym : gymList) {%>
+					<div class="gym-detail-iamge-trainer" onclick='javascript:location="gym-detail.ch?gym_id=<%=gym.getGym_id()%>"' >
+						
+						
+							
 							<div class="gym-detail-iamge-trainer-list" style="width: 500px; height: 300px;">
 								<img src="images/<%=gym.getGym_picture().split(",")[0]%>"
 									 class="trianer-image"
@@ -88,7 +102,7 @@
 							</div>
 							
 						
-
+						
 					</div>
 				</div>
 

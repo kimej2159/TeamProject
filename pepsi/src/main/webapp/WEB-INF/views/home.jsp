@@ -34,7 +34,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="/gym.ch">
+                        <a href="/list.bo">
                             <h2 class="post-title">커뮤니티를 통한 피트니스와 건강에 관한 모든 것.</h2>
                         </a>
                         <p class="post-meta">

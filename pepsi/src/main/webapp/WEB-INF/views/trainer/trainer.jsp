@@ -29,6 +29,24 @@
 	</jsp:include>
 	<!-- Post Content-->
         <article class="mb-4">
+        
+        <form action="trainer-search.ch" method="post">
+			<div class="search-form"
+				style="display: flex; justify-content: center; align-items: center; width: 800px; margin: 0 auto;">
+				<div class="search-form-edit"
+					style="display: flex; flex-direction: row; align-items: center;">
+					<input type="text" class="form-control" id="searchKeyword"
+						name="searchKeyword" placeholder="트레이너 이름을 입력하세요">
+				</div>
+				<div class="search-form-btn"
+					style="display: flex; align-items: center;">
+					<button type="submit" class="btn btn-primary">
+						검색 <span class="sr-only">검색</span>
+					</button>
+				</div>
+			</div>
+		</form>
+        
             
 		<div class="card-container">
 			<%
